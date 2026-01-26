@@ -1,0 +1,13 @@
+# ninja log v7
+0	29	1769412088598942221	CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj	d1e0d032eb9abc1a
+1	30	1769412088601426863	CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj	46be5a93873b401d
+1	36	1769412088601558885	CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj	1bb9fc8361c1a3fd
+1	158	1769412088600791248	CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj	7a558d5e54428e84
+1	158	1769412088601320499	CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37/uc_tc37.c.obj	77845e306a08ab37
+0	158	1769412088600675316	CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj	6d48dbcd9b81ed31
+1	159	1769412088601691037	CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj	498417b106ec0089
+1	160	1769412088601110187	CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj	9664716ee01f451e
+1	162	1769412088601009064	CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj	a58b6b7e7076acdb
+1	203	1769412088600895647	CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj	c6459d5864446de3
+1	222	1769412088601217603	CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj	6223dd72a4971597
+222	243	1769412088820951044	tc375_bsp_example.elf	f40c4e7e2543fa14

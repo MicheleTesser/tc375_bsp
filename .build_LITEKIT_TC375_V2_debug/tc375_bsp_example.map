@@ -1,0 +1,635 @@
+     VMA      LMA     Size Align Out     In      Symbol
+80000000 80000000        0     1 INT_FLASH_MEMORY_BASE = ORIGIN ( int_flash0 )
+  600000   600000        0     1 INT_FLASH_MEMORY_SIZE = 6M
+    1000     1000        0     1 SHARED_STACK_SIZE = 4K
+     100      100        0     1 CSA_REGIONS = 256
+    4000     4000        0     1 CSA_SIZE = CSA_REGIONS * 64
+    1000     1000        0     1 __HEAP_SIZE = DEFINED ( __HEAP_SIZE ) ? __HEAP_SIZE : 4K
+af400000 af400000      1f4     4 .bmhd_0_orig
+af400000 af400000      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_0_orig)
+af400000 af400000      1f4     1                 bmhd_0_orig
+af400200 af400200      1f4     4 .bmhd_1_orig
+af400200 af400200      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_1_orig)
+af400200 af400200      1f4     1                 bmhd_1_orig
+af400400 af400400      1f4     4 .bmhd_2_orig
+af400400 af400400      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_2_orig)
+af400400 af400400      1f4     1                 bmhd_2_orig
+af400600 af400600      1f4     4 .bmhd_3_orig
+af400600 af400600      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_3_orig)
+af400600 af400600      1f4     1                 bmhd_3_orig
+af401000 af401000      1f4     4 .bmhd_0_copy
+af401000 af401000      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_0_copy)
+af401000 af401000      1f4     1                 bmhd_0_copy
+af401200 af401200      1f4     4 .bmhd_1_copy
+af401200 af401200      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_1_copy)
+af401200 af401200      1f4     1                 bmhd_1_copy
+af401400 af401400      1f4     4 .bmhd_2_copy
+af401400 af401400      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_2_copy)
+af401400 af401400      1f4     1                 bmhd_2_copy
+af401600 af401600      1f4     4 .bmhd_3_copy
+af401600 af401600      1f4     4         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.bmhd_3_copy)
+af401600 af401600      1f4     1                 bmhd_3_copy
+80000000 80000000        a     1 .crt0_boot
+80000000 80000000        a     1         CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj:(.crt0_boot.code)
+80000000 80000000        0     1                 _crt0_reset
+80000100 80000100      22e   256 .bsp_trap_reset
+80000100 80000100       f0   256         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.bsp_trap_vector_table)
+80000100 80000100        0     1                 BSP_TRAP_VECTOR_TABLE
+800001f0 800001f0      13e     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.bsp_trap_handlers)
+800001f0 800001f0        0     1                 .L0 
+800001f0 800001f0        0     1                 .L0 
+800001f0 800001f0        0     1                 .L0 
+800001f0 800001f0       20     1                 Trap_0_Handler
+80000210 80000210        0     1                 .L0 
+80000210 80000210        0     1                 .L0 
+80000210 80000210        0     1                 .L0 
+80000210 80000210       48     1                 Trap_1_Handler
+80000258 80000258        0     1                 .L0 
+80000258 80000258        0     1                 .L0 
+80000258 80000258        0     1                 .L0 
+80000258 80000258       38     1                 Trap_2_Handler
+80000290 80000290        0     1                 .L0 
+80000290 80000290        0     1                 .L0 
+80000290 80000290        0     1                 .L0 
+80000290 80000290       48     1                 Trap_3_Handler
+800002d8 800002d8        0     1                 .L0 
+800002d8 800002d8        0     1                 .L0 
+800002d8 800002d8        0     1                 .L0 
+800002d8 800002d8       28     1                 Trap_4_Handler
+80000300 80000300        0     1                 .L0 
+80000300 80000300        0     1                 .L0 
+80000300 80000300        0     1                 .L0 
+80000300 80000300        c     1                 Trap_5_Handler
+8000030c 8000030c        0     1                 .L0 
+8000030c 8000030c        0     1                 .L0 
+8000030c 8000030c        0     1                 .L0 
+8000030c 8000030c        c     1                 Trap_6_Handler
+80000318 80000318        0     1                 .L0 
+80000318 80000318        0     1                 .L0 
+80000318 80000318        0     1                 .L0 
+80000318 80000318       16     1                 Trap_7_Handler
+8000032e 8000032e        0     1                 .L0 
+80000800 80000800      3f6  2048 .CPU0.bsp_isr_vector_table
+80000800 80000800      3f6  2048         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj:(.bsp_isr_vector_table_cpu0)
+80000800 80000800        0     1                 BSP_ISR_VECTOR_TABLE_CPU0
+80300000 80300000      3f6  2048 .CPU1.bsp_isr_vector_table
+80300000 80300000      3f6  2048         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj:(.bsp_isr_vector_table_cpu1)
+80300000 80300000        0     1                 BSP_ISR_VECTOR_TABLE_CPU1
+80300800 80300800      3f6  2048 .CPU2.bsp_isr_vector_table
+80300800 80300800      3f6  2048         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj:(.bsp_isr_vector_table_cpu2)
+80300800 80300800        0     1                 BSP_ISR_VECTOR_TABLE_CPU2
+70100000 70100000       80     4 .CPU0.bsp_isr_ram_table
+70100000 70100000       80     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.BspIsrRamTable_Cpu0)
+70100000 70100000       80     1                 BspIsrRamTable_Cpu0
+60100000 60100000       80     4 .CPU1.bsp_isr_ram_table
+60100000 60100000       80     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.BspIsrRamTable_Cpu1)
+60100000 60100000       80     1                 BspIsrRamTable_Cpu1
+50100000 50100000       80     4 .CPU2.bsp_isr_ram_table
+50100000 50100000       80     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.BspIsrRamTable_Cpu2)
+50100000 50100000       80     1                 BspIsrRamTable_Cpu2
+70000000 70000000     4000     1 .CPU0.csa
+70000000 70000000        0     1         . = ALIGN ( 64 )
+70000000 70000000        0     1         __CSA_BASE_CPU0_ = .
+70000000 70000000     4000     1         . += CSA_SIZE
+60000000 60000000     4000     1 .CPU1.csa
+60000000 60000000        0     1         . = ALIGN ( 64 )
+60000000 60000000        0     1         __CSA_BASE_CPU1_ = .
+60000000 60000000     4000     1         . += CSA_SIZE
+50000000 50000000     4000     1 .CPU2.csa
+50000000 50000000        0     1         . = ALIGN ( 64 )
+50000000 50000000        0     1         __CSA_BASE_CPU2_ = .
+50000000 50000000     4000     1         . += CSA_SIZE
+70004000 70004000     1000     1 .CPU0.stack
+70004000 70004000        0     1         . = ALIGN ( 8 )
+70004000 70004000        0     1         __STACK_BASE_CPU0_ = .
+70004000 70004000     1000     1         . += SHARED_STACK_SIZE
+60004000 60004000     1000     1 .CPU1.stack
+60004000 60004000        0     1         . = ALIGN ( 8 )
+60004000 60004000        0     1         __STACK_BASE_CPU1_ = .
+60004000 60004000     1000     1         . += SHARED_STACK_SIZE
+50004000 50004000     1000     1 .CPU2.stack
+50004000 50004000        0     1         . = ALIGN ( 8 )
+50004000 50004000        0     1         __STACK_BASE_CPU2_ = .
+50004000 50004000     1000     1         . += SHARED_STACK_SIZE
+70100080 70100080        0     1 .CPU0.ramcode
+70005000 70005000        0     1 .CPU0.data
+70005000 70005000        0     1 .CPU0.bss
+60100080 60100080        0     1 .CPU1.ramcode
+60005000 60005000        0     1 .CPU1.data
+60005000 60005000        0     1 .CPU1.bss
+50100080 50100080        0     1 .CPU2.ramcode
+50005000 50005000        0     1 .CPU2.data
+50005000 50005000        0     1 .CPU2.bss
+80000bf8 80000bf8     135a     4 .code
+80000bf8 80000bf8      104     4         CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj:(.text)
+80000bf8 80000bf8        0     1                 .L0 
+80000bf8 80000bf8        0     1                 .L0 
+80000bf8 80000bf8        0     1                 .L0 
+80000bf8 80000bf8       30     1                 unlock_wdtcon
+80000c28 80000c28       2a     1                 __getWdtBase
+80000c28 80000c28        0     1                 .L0 
+80000c28 80000c28        0     1                 .L0 
+80000c28 80000c28        0     1                 .L0 
+80000c52 80000c52        0     1                 .L0 
+80000c52 80000c52        0     1                 .L0 
+80000c52 80000c52        0     1                 .L0 
+80000c52 80000c52       36     1                 lock_wdtcon
+80000c88 80000c88        0     1                 .L0 
+80000c88 80000c88        0     1                 .L0 
+80000c88 80000c88        0     1                 .L0 
+80000c88 80000c88       30     1                 unlock_safety_wdtcon
+80000cb8 80000cb8        e     1                 __getWdtsBase
+80000cb8 80000cb8        0     1                 .L0 
+80000cb8 80000cb8        0     1                 .L0 
+80000cb8 80000cb8        0     1                 .L0 
+80000cc6 80000cc6        0     1                 .L0 
+80000cc6 80000cc6        0     1                 .L0 
+80000cc6 80000cc6        0     1                 .L0 
+80000cc6 80000cc6       36     1                 lock_safety_wdtcon
+80000cfc 80000cfc        0     1                 .L0 
+80000cfc 80000cfc       ae     4         CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj:(.text)
+80000cfc 80000cfc        0     1                 .L0 
+80000cfc 80000cfc        0     1                 .L0 
+80000cfc 80000cfc        0     1                 .L0 
+80000cfc 80000cfc       2a     1                 bsp_board_led_InitAll
+80000d26 80000d26        0     1                 .L0 
+80000d26 80000d26        0     1                 .L0 
+80000d26 80000d26        0     1                 .L0 
+80000d26 80000d26       54     1                 bsp_board_led_Init
+80000d7a 80000d7a        0     1                 .L0 
+80000d7a 80000d7a        0     1                 .L0 
+80000d7a 80000d7a        0     1                 .L0 
+80000d7a 80000d7a       30     1                 bsp_board_led_Set
+80000daa 80000daa        0     1                 .L0 
+80000dac 80000dac       ee     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.text)
+80000dac 80000dac        0     1                 .L0 
+80000dac 80000dac        0     1                 .L0 
+80000dac 80000dac        0     1                 .L0 
+80000dac 80000dac        6     1                 isr_undef_handler
+80000db2 80000db2        0     1                 .L0 
+80000db2 80000db2        0     1                 .L0 
+80000db2 80000db2        0     1                 .L0 
+80000db2 80000db2       80     1                 bsp_isr_Init
+80000e32 80000e32        0     1                 .L0 
+80000e32 80000e32        0     1                 .L0 
+80000e32 80000e32        0     1                 .L0 
+80000e32 80000e32       68     1                 bsp_isr_RegisterHandler
+80000e9a 80000e9a        0     1                 .L0 
+80000e9c 80000e9c      ec6     4         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj:(.text)
+80000e9c 80000e9c        0     1                 .L0 
+80000e9c 80000e9c        0     1                 .L0 
+80000e9c 80000e9c        0     1                 .L0 
+80000e9c 80000e9c       26     1                 bsp_uc_scu_wdt_DisableSafetyWatchdog
+80000ec2 80000ec2        0     1                 .L0 
+80000ec2 80000ec2        0     1                 .L0 
+80000ec2 80000ec2        0     1                 .L0 
+80000ec2 80000ec2       2e     1                 bsp_uc_scu_wdt_DisableCpuWatchdog
+80000ef0 80000ef0        0     1                 .L0 
+80000ef0 80000ef0        0     1                 .L0 
+80000ef0 80000ef0        0     1                 .L0 
+80000ef0 80000ef0       1c     1                 bsp_uc_core_GetCurrentCore
+80000f0c 80000f0c        0     1                 .L0 
+80000f0c 80000f0c        0     1                 .L0 
+80000f0c 80000f0c        0     1                 .L0 
+80000f0c 80000f0c      154     1                 bsp_uc_scu_EnableXOSC
+80001060 80001060        0     1                 .L0 
+80001060 80001060        0     1                 .L0 
+80001060 80001060        0     1                 .L0 
+80001060 80001060      162     1                 bsp_uc_scu_EnablePLL0
+800011c2 800011c2        0     1                 .L0 
+800011c2 800011c2        0     1                 .L0 
+800011c2 800011c2        0     1                 .L0 
+800011c2 800011c2      1c4     1                 bsp_uc_scu_EnablePLL1
+80001386 80001386        0     1                 .L0 
+80001386 80001386        0     1                 .L0 
+80001386 80001386        0     1                 .L0 
+80001386 80001386      1a4     1                 bsp_uc_scu_SwitchSystemClock
+8000152a 8000152a        0     1                 .L0 
+8000152a 8000152a        0     1                 .L0 
+8000152a 8000152a        0     1                 .L0 
+8000152a 8000152a       48     1                 bsp_uc_scu_SetCcuCon
+80001572 80001572        0     1                 .L0 
+80001572 80001572        0     1                 .L0 
+80001572 80001572        0     1                 .L0 
+80001572 80001572       9a     1                 bsp_uc_ccu_SelectExtClk0
+8000160c 8000160c        0     1                 .L0 
+8000160c 8000160c        0     1                 .L0 
+8000160c 8000160c        0     1                 .L0 
+8000160c 8000160c       88     1                 bsp_uc_ccu_SelectExtClk1
+80001694 80001694        0     1                 .L0 
+80001694 80001694        0     1                 .L0 
+80001694 80001694        0     1                 .L0 
+80001694 80001694       8a     1                 bsp_uc_core_StartCore
+8000171e 8000171e        0     1                 .L0 
+8000171e 8000171e        0     1                 .L0 
+8000171e 8000171e        0     1                 .L0 
+8000171e 8000171e       2c     1                 bsp_uc_core_StartAllCores
+8000174a 8000174a        0     1                 .L0 
+8000174a 8000174a        0     1                 .L0 
+8000174a 8000174a        0     1                 .L0 
+8000174a 8000174a       70     1                 bsp_uc_port_EnableInput
+800017ba 800017ba        0     1                 .L0 
+800017ba 800017ba        0     1                 .L0 
+800017ba 800017ba        0     1                 .L0 
+800017ba 800017ba       e8     1                 bsp_uc_port_EnableOutput
+800018a2 800018a2        0     1                 .L0 
+800018a2 800018a2        0     1                 .L0 
+800018a2 800018a2        0     1                 .L0 
+800018a2 800018a2       4c     1                 bsp_uc_port_SetGPIO
+800018ee 800018ee        0     1                 .L0 
+800018ee 800018ee        0     1                 .L0 
+800018ee 800018ee        0     1                 .L0 
+800018ee 800018ee       3a     1                 bsp_uc_port_GetGPIO
+80001928 80001928        0     1                 .L0 
+80001928 80001928        0     1                 .L0 
+80001928 80001928        0     1                 .L0 
+80001928 80001928       5a     1                 bsp_uc_pflash_SetWs
+80001982 80001982        0     1                 .L0 
+80001982 80001982        0     1                 .L0 
+80001982 80001982        0     1                 .L0 
+80001982 80001982       5c     1                 bsp_uc_dflash_SetWs
+800019de 800019de        0     1                 .L0 
+800019de 800019de        0     1                 .L0 
+800019de 800019de        0     1                 .L0 
+800019de 800019de       36     1                 bsp_uc_core_EnableICache
+80001a14 80001a14        0     1                 .L0 
+80001a14 80001a14        0     1                 .L0 
+80001a14 80001a14        0     1                 .L0 
+80001a14 80001a14       20     1                 bsp_uc_core_EnableDCache
+80001a34 80001a34        0     1                 .L0 
+80001a34 80001a34        0     1                 .L0 
+80001a34 80001a34        0     1                 .L0 
+80001a34 80001a34       10     1                 bsp_uc_core_GetCurrentInterruptPriority
+80001a44 80001a44        0     1                 .L0 
+80001a44 80001a44        0     1                 .L0 
+80001a44 80001a44        0     1                 .L0 
+80001a44 80001a44       2e     1                 bsp_uc_stm_ReloadChannel
+80001a72 80001a72        0     1                 .L0 
+80001a72 80001a72        0     1                 .L0 
+80001a72 80001a72        0     1                 .L0 
+80001a72 80001a72       4a     1                 bsp_uc_stm_EnableChannelIsr
+80001abc 80001abc        0     1                 .L0 
+80001abc 80001abc        0     1                 .L0 
+80001abc 80001abc        0     1                 .L0 
+80001abc 80001abc       26     1                 bsp_uc_stm_ClearChannelIsrFlag
+80001ae2 80001ae2        0     1                 .L0 
+80001ae2 80001ae2        0     1                 .L0 
+80001ae2 80001ae2        0     1                 .L0 
+80001ae2 80001ae2       22     1                 bsp_uc_stm_IsChannelIsrFlag
+80001b04 80001b04        0     1                 .L0 
+80001b04 80001b04        0     1                 .L0 
+80001b04 80001b04        0     1                 .L0 
+80001b04 80001b04       1e     1                 bsp_uc_stm_GetChannelCurrentValue
+80001b22 80001b22        0     1                 .L0 
+80001b22 80001b22        0     1                 .L0 
+80001b22 80001b22        0     1                 .L0 
+80001b22 80001b22       54     1                 bsp_uc_stm_Wait
+80001b76 80001b76        0     1                 .L0 
+80001b76 80001b76        0     1                 .L0 
+80001b76 80001b76        0     1                 .L0 
+80001b76 80001b76       2a     1                 bsp_uc_intc_SetBIV
+80001ba0 80001ba0        0     1                 .L0 
+80001ba0 80001ba0        0     1                 .L0 
+80001ba0 80001ba0        0     1                 .L0 
+80001ba0 80001ba0       6a     1                 bsp_uc_intc_stm_SetSRC
+80001c0a 80001c0a        0     1                 .L0 
+80001c0a 80001c0a        0     1                 .L0 
+80001c0a 80001c0a        0     1                 .L0 
+80001c0a 80001c0a        6     1                 bsp_uc_intc_EnableExternalInterrupts
+80001c10 80001c10        0     1                 .L0 
+80001c10 80001c10        0     1                 .L0 
+80001c10 80001c10        0     1                 .L0 
+80001c10 80001c10      100     1                 bsp_uc_InitClock
+80001d10 80001d10        0     1                 .L0 
+80001d10 80001d10        0     1                 .L0 
+80001d10 80001d10        0     1                 .L0 
+80001d10 80001d10       52     1                 bsp_uc_intc_InitBIV
+80001d62 80001d62        0     1                 .L0 
+80001d64 80001d64      118     4         CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj:(.text)
+80001d64 80001d64        0     1                 _start
+80001dc0 80001dc0        0     1                 loop_csa
+80001e0a 80001e0a        0     1                 _exit
+80001e12 80001e12        0     1                 Crt0BssInit
+80001e16 80001e16        0     1                 _table_bss_clear_loop
+80001e26 80001e26        0     1                 _table_bss_clear_loop_end
+80001e28 80001e28        0     1                 Crt0DataInit
+80001e2c 80001e2c        0     1                 _table_data_copy_loop
+80001e40 80001e40        0     1                 _table_data_copy_loop_end
+80001e42 80001e42        0     1                 Crt0CtorInit
+80001e4c 80001e4c        0     1                 _ctor_exec_loop
+80001e56 80001e56        0     1                 _ctor_exec_end
+80001e58 80001e58        0     1                 clear_exec
+80001e62 80001e62        0     1                 _clear_exec_loop
+80001e68 80001e68        0     1                 _clear_exec_end
+80001e6a 80001e6a        0     1                 copy_exec
+80001e72 80001e72        0     1                 _copy_exec_loop
+80001e7a 80001e7a        0     1                 _copy_exec_end
+80001e7c 80001e7c       d6     4         CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj:(.text)
+80001e7c 80001e7c        0     1                 .L0 
+80001e7c 80001e7c        0     1                 .L0 
+80001e7c 80001e7c        0     1                 .L0 
+80001e7c 80001e7c       36     1                 TimerMulticoreIsrHandler
+80001eb2 80001eb2        0     1                 .L0 
+80001eb2 80001eb2        0     1                 .L0 
+80001eb2 80001eb2        0     1                 .L0 
+80001eb2 80001eb2       5e     1                 shared_main
+80001f10 80001f10        0     1                 .L0 
+80001f10 80001f10        0     1                 .L0 
+80001f10 80001f10        0     1                 .L0 
+80001f10 80001f10       1e     1                 Crt0PreInit
+80001f2e 80001f2e        0     1                 .L0 
+80001f2e 80001f2e        0     1                 .L0 
+80001f2e 80001f2e        0     1                 .L0 
+80001f2e 80001f2e       24     1                 Crt0PostInit
+80001f52 80001f52        0     1                 .L0 
+b0000000 b0000000        0     1 .ramcode
+80001f54 80001f54       10     4 .rodata
+80001f54 80001f54       10     4         CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj:(.rodata)
+80001f54 80001f54       10     1                 board_led
+80001f64 80001f64        8     4 .ctors
+80001f64 80001f64        0     1         __CTOR_LIST__ = .
+80001f64 80001f64        4     1         LONG ( ( __CTOR_END__ - __CTOR_LIST__ ) / 4 - 2 )
+80001f68 80001f68        4     1         LONG ( 0 )
+80001f6c 80001f6c        0     1         __CTOR_END__ = .
+80001f6c 80001f6c        0     1 .sdata2
+b0000000 b0000000        0     1 .sdata
+b0000000 b0000000        0     1 .sbss
+b0000000 b0000000        0     1 .data
+b0000000 b0000000        0     1 .bss
+b0000000 b0000000     1000     8 .heap
+b0000000 b0000000     1000     1         . += __HEAP_SIZE
+80001f6c 80001f6c       28     1 .CPU0.clear_sec
+80001f6c 80001f6c        4     1         LONG ( ADDR ( .CPU0.bss ) )
+80001f70 80001f70        4     1         LONG ( SIZEOF ( .CPU0.bss ) )
+80001f74 80001f74        4     1         LONG ( ADDR ( .sbss ) )
+80001f78 80001f78        4     1         LONG ( SIZEOF ( .sbss ) )
+80001f7c 80001f7c        4     1         LONG ( ADDR ( .bss ) )
+80001f80 80001f80        4     1         LONG ( SIZEOF ( .bss ) )
+80001f84 80001f84        4     1         LONG ( ADDR ( .heap ) )
+80001f88 80001f88        4     1         LONG ( SIZEOF ( .heap ) )
+80001f8c 80001f8c        4     1         LONG ( - 1 )
+80001f90 80001f90        4     1         LONG ( - 1 )
+80001f94 80001f94       48     1 .CPU0.copy_sec
+80001f94 80001f94        4     1         LONG ( LOADADDR ( .CPU0.ramcode ) )
+80001f98 80001f98        4     1         LONG ( ADDR ( .CPU0.ramcode ) )
+80001f9c 80001f9c        4     1         LONG ( SIZEOF ( .CPU0.ramcode ) )
+80001fa0 80001fa0        4     1         LONG ( LOADADDR ( .CPU0.data ) )
+80001fa4 80001fa4        4     1         LONG ( ADDR ( .CPU0.data ) )
+80001fa8 80001fa8        4     1         LONG ( SIZEOF ( .CPU0.data ) )
+80001fac 80001fac        4     1         LONG ( LOADADDR ( .ramcode ) )
+80001fb0 80001fb0        4     1         LONG ( ADDR ( .ramcode ) )
+80001fb4 80001fb4        4     1         LONG ( SIZEOF ( .ramcode ) )
+80001fb8 80001fb8        4     1         LONG ( LOADADDR ( .sdata ) )
+80001fbc 80001fbc        4     1         LONG ( ADDR ( .sdata ) )
+80001fc0 80001fc0        4     1         LONG ( SIZEOF ( .sdata ) )
+80001fc4 80001fc4        4     1         LONG ( LOADADDR ( .data ) )
+80001fc8 80001fc8        4     1         LONG ( ADDR ( .data ) )
+80001fcc 80001fcc        4     1         LONG ( SIZEOF ( .data ) )
+80001fd0 80001fd0        4     1         LONG ( - 1 )
+80001fd4 80001fd4        4     1         LONG ( - 1 )
+80001fd8 80001fd8        4     1         LONG ( - 1 )
+80300bf6 80300bf6       10     1 .CPU1.clear_sec
+80300bf6 80300bf6        4     1         LONG ( ADDR ( .CPU1.bss ) )
+80300bfa 80300bfa        4     1         LONG ( SIZEOF ( .CPU1.bss ) )
+80300bfe 80300bfe        4     1         LONG ( - 1 )
+80300c02 80300c02        4     1         LONG ( - 1 )
+80300c06 80300c06       24     1 .CPU1.copy_sec
+80300c06 80300c06        4     1         LONG ( LOADADDR ( .CPU1.ramcode ) )
+80300c0a 80300c0a        4     1         LONG ( 0 + ADDR ( .CPU1.ramcode ) )
+80300c0e 80300c0e        4     1         LONG ( SIZEOF ( .CPU1.ramcode ) )
+80300c12 80300c12        4     1         LONG ( LOADADDR ( .CPU1.data ) )
+80300c16 80300c16        4     1         LONG ( ADDR ( .CPU1.data ) )
+80300c1a 80300c1a        4     1         LONG ( SIZEOF ( .CPU1.data ) )
+80300c1e 80300c1e        4     1         LONG ( - 1 )
+80300c22 80300c22        4     1         LONG ( - 1 )
+80300c26 80300c26        4     1         LONG ( - 1 )
+80300c2a 80300c2a       10     1 .CPU2.clear_sec
+80300c2a 80300c2a        4     1         LONG ( ADDR ( .CPU2.bss ) )
+80300c2e 80300c2e        4     1         LONG ( SIZEOF ( .CPU2.bss ) )
+80300c32 80300c32        4     1         LONG ( - 1 )
+80300c36 80300c36        4     1         LONG ( - 1 )
+80300c3a 80300c3a       24     1 .CPU2.copy_sec
+80300c3a 80300c3a        4     1         LONG ( LOADADDR ( .CPU2.ramcode ) )
+80300c3e 80300c3e        4     1         LONG ( 0 + ADDR ( .CPU2.ramcode ) )
+80300c42 80300c42        4     1         LONG ( SIZEOF ( .CPU2.ramcode ) )
+80300c46 80300c46        4     1         LONG ( LOADADDR ( .CPU2.data ) )
+80300c4a 80300c4a        4     1         LONG ( 0 + ADDR ( .CPU2.data ) )
+80300c4e 80300c4e        4     1         LONG ( SIZEOF ( .CPU2.data ) )
+80300c52 80300c52        4     1         LONG ( - 1 )
+80300c56 80300c56        4     1         LONG ( - 1 )
+80300c5a 80300c5a        4     1         LONG ( - 1 )
+80009f6c 80009f6c        0     1 _SMALL_DATA2_ = ADDR ( .sdata2 ) + 0x8000
+b0008000 b0008000        0     1 _SMALL_DATA_ = ADDR ( .sdata ) + 0x8000
+b0000000 b0000000        0     1 __HEAP = ADDR ( .heap )
+    1000     1000        0     1 __HEAP_END = SIZEOF ( .heap )
+80001fdc 80001fdc       84     4 .crt0_config
+80001fdc 80001fdc        0     1         PROVIDE ( __crt0_config = . )
+80001fdc 80001fdc        4     1         LONG ( ADDR ( .CPU0.stack ) )
+80001fe0 80001fe0        4     1         LONG ( SIZEOF ( .CPU0.stack ) )
+80001fe4 80001fe4        4     1         LONG ( ADDR ( .CPU0.csa ) )
+80001fe8 80001fe8        4     1         LONG ( SIZEOF ( .CPU0.csa ) )
+80001fec 80001fec        4     1         LONG ( _SMALL_DATA_ )
+80001ff0 80001ff0        4     1         LONG ( _SMALL_DATA2_ )
+80001ff4 80001ff4        4     1         LONG ( 0 )
+80001ff8 80001ff8        4     1         LONG ( 0 )
+80001ffc 80001ffc        4     1         LONG ( ADDR ( .CPU0.clear_sec ) )
+80002000 80002000        4     1         LONG ( ADDR ( .CPU0.copy_sec ) )
+80002004 80002004        4     1         LONG ( __CTOR_LIST__ )
+80002008 80002008        4     1         LONG ( ADDR ( .CPU1.stack ) )
+8000200c 8000200c        4     1         LONG ( SIZEOF ( .CPU1.stack ) )
+80002010 80002010        4     1         LONG ( ADDR ( .CPU1.csa ) )
+80002014 80002014        4     1         LONG ( SIZEOF ( .CPU1.csa ) )
+80002018 80002018        4     1         LONG ( _SMALL_DATA_ )
+8000201c 8000201c        4     1         LONG ( _SMALL_DATA2_ )
+80002020 80002020        4     1         LONG ( 0 )
+80002024 80002024        4     1         LONG ( 0 )
+80002028 80002028        4     1         LONG ( ADDR ( .CPU1.clear_sec ) )
+8000202c 8000202c        4     1         LONG ( ADDR ( .CPU1.copy_sec ) )
+80002030 80002030        4     1         LONG ( 0 )
+80002034 80002034        4     1         LONG ( ADDR ( .CPU2.stack ) )
+80002038 80002038        4     1         LONG ( SIZEOF ( .CPU2.stack ) )
+8000203c 8000203c        4     1         LONG ( ADDR ( .CPU2.csa ) )
+80002040 80002040        4     1         LONG ( SIZEOF ( .CPU2.csa ) )
+80002044 80002044        4     1         LONG ( _SMALL_DATA_ )
+80002048 80002048        4     1         LONG ( _SMALL_DATA2_ )
+8000204c 8000204c        4     1         LONG ( 0 )
+80002050 80002050        4     1         LONG ( 0 )
+80002054 80002054        4     1         LONG ( ADDR ( .CPU2.clear_sec ) )
+80002058 80002058        4     1         LONG ( ADDR ( .CPU2.copy_sec ) )
+8000205c 8000205c        4     1         LONG ( 0 )
+       0        0       e9     1 .comment
+       0        0       e9     1         <internal>:(.comment)
+       0        0     aa29     1 .debug_info
+       0        0      154     1         CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj:(.debug_info)
+     154      154      179     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj:(.debug_info)
+     2cd      2cd       92     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj:(.debug_info)
+     35f      35f      163     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.debug_info)
+     4c2      4c2      15c     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.debug_info)
+     61e      61e     a15c     1         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj:(.debug_info)
+    a77a     a77a      167     1         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.debug_info)
+    a8e1     a8e1      148     1         CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj:(.debug_info)
+       0        0      589     1 .debug_abbrev
+       0        0       a2     1         CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj:(.debug_abbrev)
+      a2       a2       75     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj:(.debug_abbrev)
+     117      117       77     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj:(.debug_abbrev)
+     18e      18e       c4     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.debug_abbrev)
+     252      252       74     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.debug_abbrev)
+     2c6      2c6      1da     1         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj:(.debug_abbrev)
+     4a0      4a0       75     1         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.debug_abbrev)
+     515      515       74     1         CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj:(.debug_abbrev)
+       0        0     16e2     1 .debug_line
+       0        0      1bc     1         CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj:(.debug_line)
+       0        0        0     1                 .Lline_table_start0
+     1bc      1bc      141     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj:(.debug_line)
+     1bc      1bc        0     1                 .Lline_table_start0
+     2fd      2fd      135     1         CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj:(.debug_line)
+     2fd      2fd        0     1                 .Lline_table_start0
+     432      432      216     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.debug_line)
+     432      432        0     1                 .Lline_table_start0
+     648      648      26b     1         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.debug_line)
+     648      648        0     1                 .Lline_table_start0
+     8b3      8b3      b19     1         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj:(.debug_line)
+     8b3      8b3        0     1                 .Lline_table_start0
+    13cc     13cc      105     1         CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj:(.debug_line)
+    13cc     13cc        0     1                 .Lline_table_start0
+    14d1     14d1      211     1         CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj:(.debug_line)
+    14d1     14d1        0     1                 .Lline_table_start0
+       0        0      4b4     4 .debug_frame
+       0        0       84     4         CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj:(.debug_frame)
+       0        0        0     1                 .L0 
+      84       84       4c     4         CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj:(.debug_frame)
+      84       84        0     1                 .L0 
+      d0       d0       48     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj:(.debug_frame)
+      d0       d0        0     1                 .L0 
+     118      118       b0     4         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj:(.debug_frame)
+     118      118        0     1                 .L0 
+     1c8      1c8      28c     4         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj:(.debug_frame)
+     1c8      1c8        0     1                 .L0 
+     454      454       60     4         CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj:(.debug_frame)
+     454      454        0     1                 .L0 
+       0        0     50ae     1 .debug_str
+       0        0     50ae     1         <internal>:(.debug_str)
+       0        0     1360     4 .symtab
+       0        0     1360     4         <internal>:(.symtab)
+       0        0      2d7     1 .shstrtab
+       0        0      2d7     1         <internal>:(.shstrtab)
+       0        0      ca5     1 .strtab
+       0        0      ca5     1         <internal>:(.strtab)
+
+Cross Reference Table
+
+Symbol                                            File
+unlock_wdtcon                                     CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+lock_wdtcon                                       CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+unlock_safety_wdtcon                              CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+lock_safety_wdtcon                                CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_board_led_InitAll                             CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_board_led_Init                                CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+board_led                                         CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+bsp_uc_port_SetGPIO                               CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+bsp_uc_port_EnableOutput                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+bsp_board_led_Set                                 CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+isr_undef_handler                                 CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+bsp_isr_Init                                      CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_core_GetCurrentCore                        CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+BSP_ISR_VECTOR_TABLE_CPU0                         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+BSP_ISR_VECTOR_TABLE_CPU1                         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+BSP_ISR_VECTOR_TABLE_CPU2                         CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_intc_SetBIV                                CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+bsp_isr_RegisterHandler                           CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+BspIsrRamTable_Cpu0                               CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+BspIsrRamTable_Cpu1                               CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+BspIsrRamTable_Cpu2                               CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj
+BSP_TRAP_VECTOR_TABLE                             CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_0_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_1_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_2_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_3_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_4_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_5_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_6_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+Trap_7_Handler                                    CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj
+bsp_uc_scu_wdt_DisableSafetyWatchdog              CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_scu_wdt_DisableCpuWatchdog                 CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_scu_EnableXOSC                             CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_scu_EnablePLL0                             CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_scu_EnablePLL1                             CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_scu_SwitchSystemClock                      CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_scu_SetCcuCon                              CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_ccu_SelectExtClk0                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_ccu_SelectExtClk1                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_core_StartCore                             CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_core_StartAllCores                         CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+_crt0_reset                                       CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_port_EnableInput                           CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_port_GetGPIO                               CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_pflash_SetWs                               CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_dflash_SetWs                               CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_core_EnableICache                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_core_EnableDCache                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_core_GetCurrentInterruptPriority           CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_stm_ReloadChannel                          CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_stm_EnableChannelIsr                       CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_stm_ClearChannelIsrFlag                    CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_stm_IsChannelIsrFlag                       CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_stm_GetChannelCurrentValue                 CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_stm_Wait                                   CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bsp_uc_intc_stm_SetSRC                            CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_intc_EnableExternalInterrupts              CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_InitClock                                  CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+bsp_uc_intc_InitBIV                               CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj
+bmhd_0_orig                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_1_orig                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_2_orig                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_3_orig                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_0_copy                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_1_copy                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_2_copy                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+bmhd_3_copy                                       CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj
+_start                                            CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+__crt0_config                                     /home/mites/Dev/RaceUp/aurix_tc375_bsp/./ld/tc37x_bsp_example_llvm.ld:402
+                                                  CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+Crt0PreInit                                       CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+Crt0BssInit                                       CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+Crt0DataInit                                      CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+Crt0CtorInit                                      CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+Crt0PostInit                                      CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+shared_main                                       CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+                                                  CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj
+TimerMulticoreIsrHandler                          CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
