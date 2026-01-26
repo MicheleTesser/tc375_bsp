@@ -1,0 +1,44 @@
+# Build outputs
+.build*/
+out/
+cmake-build-*/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Object files and binaries
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.elf
+*.hex
+*.bin
+*.map
+
+# Debug and profiling artifacts
+*.dSYM/
+*.su
+*.gcno
+*.gcda
+*.gcov
+*.profraw
+*.profdata
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.nvim/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+.envrc

@@ -951,8 +951,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8"
-      binary: "/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8"
+      source: "/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq"
+      binary: "/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=tc162"
       CMAKE_C_FLAGS_DEBUG: "-fomit-frame-pointer -g -O0 "
@@ -962,17 +962,17 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8'
+        Change Dir: '/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_dada9
-        [1/2] /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang   -march=tc162    -v -MD -MT CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/ninja -v cmTC_d3441
+        [1/2] /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang   -march=tc162    -v -MD -MT CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         HighTec clang version 10.1.0 (b5c61fbd1a9df0a88e580ddc044bb2d71327263e) based on LLVM 19.1.7 built on 2025-10-09
         Target: tricore
         Thread model: posix
         InstalledDir: /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin
         Build config: +assertions
          (in-process)
-         "/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang" -cc1 -triple tricore -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mllvm -tricore-load-to-imm-limit=0 -mllvm -tricore-use-bol=realistic -mllvm -tricore-emit-trap=false -mllvm -tricore-postindexed-sequence-enabled=true -mllvm -tricore-post-pseudos-mov-combine-enabled=true -mllvm -tricore-subreg-liveness=false -mllvm -scalar-evolution-huge-expr-threshold=16 -fexperimental-assignment-tracking=disabled -fshort-enums -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -mllvm -tricore-enable-simd=true -mllvm -vectorize-loops=true -mllvm -vectorize-slp=true -target-cpu tc3xx -target-feature +senum -target-feature +fp32 -target-feature -df32 -target-feature +tc162 -target-feature -cpu131 -target-feature -cpu141 -debugger-tuning=gdb -fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8 -v -fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8 -resource-dir /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19 -dependency-file CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include -internal-externc-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/tricore/include -ferror-limit 19 -fshort-enums -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -o CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+         "/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang" -cc1 -triple tricore -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mllvm -tricore-load-to-imm-limit=0 -mllvm -tricore-use-bol=realistic -mllvm -tricore-emit-trap=false -mllvm -tricore-postindexed-sequence-enabled=true -mllvm -tricore-post-pseudos-mov-combine-enabled=true -mllvm -tricore-subreg-liveness=false -mllvm -scalar-evolution-huge-expr-threshold=16 -fexperimental-assignment-tracking=disabled -fshort-enums -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -mllvm -tricore-enable-simd=true -mllvm -vectorize-loops=true -mllvm -vectorize-slp=true -target-cpu tc3xx -target-feature +senum -target-feature +fp32 -target-feature -df32 -target-feature +tc162 -target-feature -cpu131 -target-feature -cpu141 -debugger-tuning=gdb -fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq -v -fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq -resource-dir /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19 -dependency-file CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include -internal-externc-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/tricore/include -ferror-limit 19 -fshort-enums -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -o CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         clang -cc1 version 19.1.7 based upon LLVM 19.1.7 default target tricore
         ignoring duplicate directory "/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include"
         #include "..." search starts here:
@@ -980,7 +980,7 @@ events:
          /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include
          /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/tricore/include
         End of search list.
-        [2/2] : && /usr/bin/cmake -E rm -f libcmTC_dada9.a && /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/llvm-ar qc libcmTC_dada9.a  CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj && /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/llvm-ranlib libcmTC_dada9.a && :
+        [2/2] : && /usr/bin/cmake -E rm -f libcmTC_d3441.a && /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/llvm-ar qc libcmTC_d3441.a  CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj && /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/llvm-ranlib libcmTC_d3441.a && :
         
       exitCode: 0
   -
@@ -1011,17 +1011,17 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(clang|;ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(clang|;ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8']
+        ignore line: [Change Dir: '/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_dada9]
-        ignore line: [[1/2] /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang   -march=tc162    -v -MD -MT CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_d3441]
+        ignore line: [[1/2] /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang   -march=tc162    -v -MD -MT CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [HighTec clang version 10.1.0 (b5c61fbd1a9df0a88e580ddc044bb2d71327263e) based on LLVM 19.1.7 built on 2025-10-09]
         ignore line: [Target: tricore]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin]
         ignore line: [Build config: +assertions]
         ignore line: [ (in-process)]
-        link line: [ "/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang" -cc1 -triple tricore -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mllvm -tricore-load-to-imm-limit=0 -mllvm -tricore-use-bol=realistic -mllvm -tricore-emit-trap=false -mllvm -tricore-postindexed-sequence-enabled=true -mllvm -tricore-post-pseudos-mov-combine-enabled=true -mllvm -tricore-subreg-liveness=false -mllvm -scalar-evolution-huge-expr-threshold=16 -fexperimental-assignment-tracking=disabled -fshort-enums -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -mllvm -tricore-enable-simd=true -mllvm -vectorize-loops=true -mllvm -vectorize-slp=true -target-cpu tc3xx -target-feature +senum -target-feature +fp32 -target-feature -df32 -target-feature +tc162 -target-feature -cpu131 -target-feature -cpu141 -debugger-tuning=gdb -fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8 -v -fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8 -resource-dir /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19 -dependency-file CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include -internal-externc-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/tricore/include -ferror-limit 19 -fshort-enums -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -o CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        link line: [ "/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang" -cc1 -triple tricore -emit-obj -disable-free -clear-ast-before-backend -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mllvm -tricore-load-to-imm-limit=0 -mllvm -tricore-use-bol=realistic -mllvm -tricore-emit-trap=false -mllvm -tricore-postindexed-sequence-enabled=true -mllvm -tricore-post-pseudos-mov-combine-enabled=true -mllvm -tricore-subreg-liveness=false -mllvm -scalar-evolution-huge-expr-threshold=16 -fexperimental-assignment-tracking=disabled -fshort-enums -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -nostdsysteminc -mllvm -tricore-enable-simd=true -mllvm -vectorize-loops=true -mllvm -vectorize-slp=true -target-cpu tc3xx -target-feature +senum -target-feature +fp32 -target-feature -df32 -target-feature +tc162 -target-feature -cpu131 -target-feature -cpu141 -debugger-tuning=gdb -fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq -v -fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq -resource-dir /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19 -dependency-file CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include -internal-externc-isystem /home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/tricore/include -ferror-limit 19 -fshort-enums -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -o CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
           arg [/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/bin/clang] ==> ignore
           arg [-cc1] ==> ignore
           arg [-triple] ==> ignore
@@ -1076,15 +1076,15 @@ events:
           arg [-target-feature] ==> ignore
           arg [-cpu141] ==> ignore
           arg [-debugger-tuning=gdb] ==> ignore
-          arg [-fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8] ==> ignore
+          arg [-fdebug-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq] ==> ignore
           arg [-v] ==> ignore
-          arg [-fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-I1RpX8] ==> ignore
+          arg [-fcoverage-compilation-dir=/home/mites/Dev/RaceUp/aurix_tc375_bsp/.build_LITEKIT_TC375_V2_debug/CMakeFiles/CMakeScratch/TryCompile-pXYCMq] ==> ignore
           arg [-resource-dir] ==> ignore
           arg [/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19] ==> ignore
           arg [-dependency-file] ==> ignore
-          arg [CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj.d] ==> ignore
+          arg [CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj.d] ==> ignore
           arg [-MT] ==> ignore
-          arg [CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [-sys-header-deps] ==> ignore
           arg [-internal-isystem] ==> ignore
           arg [/home/mites/Dev/RaceUp/HighTec/toolchains/tricore/v10.1.0/lib/clang/19/include] ==> ignore
@@ -1097,7 +1097,7 @@ events:
           arg [-fskip-odr-check-in-gmf] ==> ignore
           arg [-faddrsig] ==> ignore
           arg [-o] ==> ignore
-          arg [CMakeFiles/cmTC_dada9.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_d3441.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [-x] ==> ignore
           arg [c] ==> ignore
           arg [/usr/share/cmake/Modules/CMakeCCompilerABI.c] ==> ignore

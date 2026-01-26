@@ -53,7 +53,7 @@ build CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj: C_COMPILER__tc375_b
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/machine
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -64,7 +64,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj: C_COMPILER__tc
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/board
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -75,7 +75,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -86,7 +86,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj: C_COMPILER__tc375_
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/isr
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -97,7 +97,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj: C_COM
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/isr
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -108,7 +108,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj: C_COMPILER__
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/isr
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -119,7 +119,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj: C_COMPILER__tc375_bs
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/uc
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -130,7 +130,7 @@ build CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37/uc_tc37.c.obj: C_COMPILER_
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37/uc_tc37.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -141,7 +141,7 @@ build CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj: C_COMPILER__tc37
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/crt0
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -152,7 +152,7 @@ build CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj: ASM_COMPILER__tc375
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj.d
   FLAGS = -march=tc162 -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/crt0
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
@@ -163,9 +163,64 @@ build CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj: C_COMPILER__tc375_
   CONFIG = debug
   DEP_FILE = CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj.d
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
-  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/.
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
   OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
+  TARGET_PDB = tc375_bsp_example.pdb
+  TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
+
+build CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/list.c.obj: C_COMPILER__tc375_bsp_example_unscanned_debug /home/mites/Dev/RaceUp/aurix_tc375_bsp/FreeRTOS-Kernel/list.c || cmake_object_order_depends_target_tc375_bsp_example
+  CONFIG = debug
+  DEP_FILE = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/list.c.obj.d
+  FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
+  OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
+  OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel
+  TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
+  TARGET_PDB = tc375_bsp_example.pdb
+  TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
+
+build CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/queue.c.obj: C_COMPILER__tc375_bsp_example_unscanned_debug /home/mites/Dev/RaceUp/aurix_tc375_bsp/FreeRTOS-Kernel/queue.c || cmake_object_order_depends_target_tc375_bsp_example
+  CONFIG = debug
+  DEP_FILE = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/queue.c.obj.d
+  FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
+  OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
+  OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel
+  TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
+  TARGET_PDB = tc375_bsp_example.pdb
+  TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
+
+build CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/tasks.c.obj: C_COMPILER__tc375_bsp_example_unscanned_debug /home/mites/Dev/RaceUp/aurix_tc375_bsp/FreeRTOS-Kernel/tasks.c || cmake_object_order_depends_target_tc375_bsp_example
+  CONFIG = debug
+  DEP_FILE = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/tasks.c.obj.d
+  FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
+  OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
+  OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel
+  TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
+  TARGET_PDB = tc375_bsp_example.pdb
+  TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
+
+build CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj: C_COMPILER__tc375_bsp_example_unscanned_debug /home/mites/Dev/RaceUp/aurix_tc375_bsp/FreeRTOS-Kernel/portable/MemMang/heap_4.c || cmake_object_order_depends_target_tc375_bsp_example
+  CONFIG = debug
+  DEP_FILE = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj.d
+  FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
+  OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
+  OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/MemMang
+  TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
+  TARGET_PDB = tc375_bsp_example.pdb
+  TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
+
+build CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx/port.c.obj: C_COMPILER__tc375_bsp_example_unscanned_debug /home/mites/Dev/RaceUp/aurix_tc375_bsp/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx/port.c || cmake_object_order_depends_target_tc375_bsp_example
+  CONFIG = debug
+  DEP_FILE = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx/port.c.obj.d
+  FLAGS = -march=tc162 -fomit-frame-pointer -g -O0  -DLITEKIT_TC375_V2 -D__TC37XX__ -mfloat-abi=hh32 -DTC375A -pedantic -Wall -Wuninitialized -Wconditional-uninitialized
+  INCLUDES = -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./bsp -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/. -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/include -I/home/mites/Dev/RaceUp/aurix_tc375_bsp/./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
+  OBJECT_DIR = CMakeFiles/tc375_bsp_example.dir
+  OBJECT_FILE_DIR = CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx
   TARGET_COMPILE_PDB = CMakeFiles/tc375_bsp_example.dir/
   TARGET_PDB = tc375_bsp_example.pdb
   TARGET_SUPPORT_DIR = CMakeFiles/tc375_bsp_example.dir
@@ -178,7 +233,7 @@ build CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj: C_COMPILER__tc375_
 #############################################
 # Link the executable tc375_bsp_example.elf
 
-build tc375_bsp_example.elf: C_EXECUTABLE_LINKER__tc375_bsp_example_debug CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37/uc_tc37.c.obj CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj
+build tc375_bsp_example.elf: C_EXECUTABLE_LINKER__tc375_bsp_example_debug CMakeFiles/tc375_bsp_example.dir/machine/wdtcon.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/board/bsp_board.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/board/board_litekit_TC375_V2/board.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_isr_vector_table.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/isr/bsp_traps_tc3.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/uc/bsp_uc.c.obj CMakeFiles/tc375_bsp_example.dir/bsp/uc/uc_tc37/uc_tc37.c.obj CMakeFiles/tc375_bsp_example.dir/crt0/uc_tc37_bmhd.c.obj CMakeFiles/tc375_bsp_example.dir/crt0/tc3x_crt0.S.obj CMakeFiles/tc375_bsp_example.dir/src/shared_main.c.obj CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/list.c.obj CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/queue.c.obj CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/tasks.c.obj CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj CMakeFiles/tc375_bsp_example.dir/FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx/port.c.obj
   CONFIG = debug
   FLAGS = -march=tc162 -fomit-frame-pointer -g -O0
   LINK_FLAGS = -march=tc162 -Wl,--cref -Wl,-n -Wl,-Map=tc375_bsp_example.map -Wl,--gc-sections -Wl,--cref -mfloat-abi=hh32 -Wl,-Ttc37xA_memory.ld

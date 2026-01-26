@@ -13,11 +13,13 @@ IF (${BUILD_CONFIG} STREQUAL "LITEKIT_TC375_V2")
     set(crt0_sources ${crt0_sources_tc375} )
 ENDIF()
 
-add_executable(${PROG_NAME} ${bsp_sources} ${crt0_sources} ${gen_sources} )
+add_executable(${PROG_NAME} ${bsp_sources} ${crt0_sources} ${gen_sources} ${freertos_sources} )
 
 target_include_directories(${PROG_NAME} PRIVATE
     "./bsp"
     "./"
+    "./FreeRTOS-Kernel/include"
+    "./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx"
 )
 
 target_link_directories(${PROG_NAME} PRIVATE

@@ -19,45 +19,32 @@
 
 
 #include "bsp.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 
 /* ================================================================================================
  * SYMBOLS
  * ==============================================================================================*/
 
-/* Time Base Period - each Core sets its period derived from this base */
-#define TIMER_BASE_PERIOD    (250 * UC_NB_TICKS_1MS)
-
-/* Timer Interrupt priority the same on each core */
-#define TIMER_INTERRUPT_PRIO    10
-
+/* Task periods in milliseconds */
+#define LED_TASK_PERIOD_MS    250U
 
 /* ================================================================================================
  * FUNCTIONS
  * ==============================================================================================*/
 
-/* ------------------------------------------------------------------------------------------------
- * FUNCTION: TimerMulticoreIsrHandler()
- *
- * Shared code implementation of interrupt handler for BSP Timer.
- * Each core executes three operations
- * 1. Toggle Core's LED
- * 2. Reloads STM module (each core controls on STM module)
- * 3. Clears STM interrupt flag
- * ------------------------------------------------------------------------------------------------
- */
-void TimerMulticoreIsrHandler(void)
+static void vLedTask(void *pvParameters)
 {
-	/* Use BSP API to get current CoreId */
-	uint32_t coreId = bsp_uc_core_GetCurrentCore();
+	BOARD_LED_e led = (BOARD_LED_e)(uintptr_t)pvParameters;
+	TickType_t lastWake = xTaskGetTickCount();
+	TickType_t period = led * LED_TASK_PERIOD_MS;
 
-	/* Get Core dependent Time period */
-	uint32_t corePeriod = (coreId + 1) * TIMER_BASE_PERIOD;
-
-	/* Interrupt Action based on current CoreId */
-	bsp_board_led_Set((BOARD_LED_e) coreId, BOARD_LED_SET_TOGGLE);
-	bsp_uc_stm_ReloadChannel(coreId, corePeriod);
-	bsp_uc_stm_ClearChannelIsrFlag(coreId);
+	for (;;)
+	{
+		bsp_board_led_Set(led, BOARD_LED_SET_TOGGLE);
+		vTaskDelayUntil(&lastWake, period);
+	}
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -74,26 +61,15 @@ void shared_main(void)
 {
 	/* Use BSP API to get current CoreId */
 	uint32_t coreId = bsp_uc_core_GetCurrentCore();
+	uint32_t ledIndex = coreId + 1U;
 
-	/* Get Core dependent Time period */
-	uint32_t corePeriod = (coreId + 1) * TIMER_BASE_PERIOD;
+	configASSERT(xTaskCreate(vLedTask, "LED", configMINIMAL_STACK_SIZE,
+	                         (void *)(uintptr_t)ledIndex, tskIDLE_PRIORITY + 2, NULL) == pdPASS);
 
-	/* Core dependent execution
-	 * 1. Register Timer Interrupt Handler to the core ISR Vector Table
-	 * 2. Prepare STM timer period counter
-	 * 3. Initialize SRC ISR router module
-	 * 4. Enable STM timer interrupt and start it
-	 */
-	bsp_isr_RegisterHandler(coreId, (BspIsrHandler) TimerMulticoreIsrHandler, TIMER_INTERRUPT_PRIO);
-	bsp_uc_stm_ReloadChannel(coreId, corePeriod);
-	bsp_uc_intc_stm_SetSRC(coreId, coreId, TIMER_INTERRUPT_PRIO);
-	bsp_uc_stm_EnableChannelIsr(coreId);
-
-	/* Enable External interrupts in the current Core */
 	bsp_uc_intc_EnableExternalInterrupts();
+	vTaskStartScheduler();
 
-	/* Forever empty loop - All activity executed in periodic interrupts on each core */
-	for(;;);
+	for (;;);
 }
 
 /* ------------------------------------------------------------------------------------------------

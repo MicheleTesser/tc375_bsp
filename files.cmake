@@ -22,3 +22,11 @@ set( crt0_sources_tc375
 set( gen_sources
     src/shared_main.c
 )
+
+set( freertos_sources
+    FreeRTOS-Kernel/list.c
+    FreeRTOS-Kernel/queue.c
+    FreeRTOS-Kernel/tasks.c
+    FreeRTOS-Kernel/portable/MemMang/heap_4.c
+    FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx/port.c
+)
