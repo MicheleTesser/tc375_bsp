@@ -301,6 +301,12 @@ SECTIONS
 	     *(.bss*); 
 	     *(COMMON);
 	} > DATA
+
+	/* read-write data - non-initialized, not cleared by crt0 */
+	.noinit (NOLOAD) :
+	{
+	    *(.noinit*)
+	} > DATA
 	
 	/* HEAP area for stdlib functions */
 	.heap (NOLOAD) : ALIGN(8) 
@@ -387,8 +393,10 @@ _SMALL_DATA2_ = ADDR(.sdata2) + 0x8000;
 _SMALL_DATA_ = ADDR(.sdata) + 0x8000;
 
 /* Expected HEAP SYMBOLS */
-__HEAP     = ADDR(.heap);
-__HEAP_END = SIZEOF(.heap);
+__HEAP       = ADDR(.heap);
+__HEAP_END   = ADDR(.heap) + SIZEOF(.heap);
+__heap_start = ADDR(.heap);
+__heap_end   = ADDR(.heap) + SIZEOF(.heap);
 
 
 /* ================================================================================================
