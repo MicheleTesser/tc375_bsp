@@ -270,6 +270,17 @@ SECTIONS
 		LONG(0);
 		__CTOR_END__ = .;	
 	} > RODATA
+
+  /* DWARF unwind info (must NOT go to BMHD/UCB) */
+  .eh_frame :
+  {
+      *(.eh_frame*)
+  } > RODATA
+
+  .eh_frame_hdr :
+  {
+      *(.eh_frame_hdr*)
+  } > RODATA
 	
 	/* Short-addressable read-only data */
 	.sdata2 : 

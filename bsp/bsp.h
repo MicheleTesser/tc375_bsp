@@ -9,10 +9,6 @@
  *
  *    TC3xx
  *
- * TOOLCHAIN:
- *
- *    TRICORE LLVM 5.2.0
- *
  * DESCRIPTION:
  *
  *    BSP interface file common for the TC3xx architecture.

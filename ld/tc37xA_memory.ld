@@ -40,7 +40,7 @@ MEMORY
 {
   /* User configuration block - BMHD headers only */
   ucb_bmhd_orig (rx):  org = 0xaf400000, len = 2K
-  ucb_bmhd_copy (rx):  org = 0xaf401000, len = 2K
+  ucb_bmhd_copy (rx):  org = 0xaf401000, len = 4K
 
   /* Program Flash memory - cached region */
   int_flash0 (rx):     org = 0x80000000, len = 3M

@@ -1,0 +1,79 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "tc375-base",
+      "displayName": "TC375 V2 base",
+      "generator": "Ninja",
+      "toolchainFile": "${sourceDir}/cmake/tricore-llvm-toolchain.cmake",
+      "cacheVariables": {
+        "TRICORE_CPU_FLAGS": "-mcpu=tc3xx"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug (.build_debug)",
+      "inherits": "tc375-base",
+      "binaryDir": "${sourceDir}/.build_debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release (.build_release)",
+      "inherits": "tc375-base",
+      "binaryDir": "${sourceDir}/.build_release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Build Debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "displayName": "Build Release",
+      "configurePreset": "release"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "debug",
+      "displayName": "Configure + build Debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "debug"
+        },
+        {
+          "type": "build",
+          "name": "debug"
+        }
+      ]
+    },
+    {
+      "name": "release",
+      "displayName": "Configure + build Release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "release"
+        },
+        {
+          "type": "build",
+          "name": "release"
+        }
+      ]
+    }
+  ]
+}

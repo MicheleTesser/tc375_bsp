@@ -1,72 +1,94 @@
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.20)
 
-set( PROG_NAME "tc375_bsp_example" )
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR tricore)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-project(${PROG_NAME} LANGUAGES C ASM)
+project(litekit_tc375_example C ASM)
 
-set(BUILD_CONFIG "LITEKIT_TC375_V2" CACHE STRING "Board type")
-set_property(CACHE BUILD_CONFIG PROPERTY STRINGS LITEKIT_TC375_V2)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
-include( files.cmake )
+set(TRICORE_CPU_FLAGS "-mcpu=tc3xx" CACHE STRING "Extra CPU-specific flags (e.g. -mcpu=tc3xx)")
+separate_arguments(TRICORE_CPU_FLAGS)
 
-IF (${BUILD_CONFIG} STREQUAL "LITEKIT_TC375_V2")
-    set(crt0_sources ${crt0_sources_tc375} )
-ENDIF()
-
-set_source_files_properties(${freertos_sources} PROPERTIES
-    COMPILE_OPTIONS "-Wno-unknown-attributes"
+set(LINKER_MEMORY_SCRIPT "${CMAKE_SOURCE_DIR}/ld/tc37xA_memory.ld")
+set(LINKER_DEPENDS
+  "${CMAKE_SOURCE_DIR}/ld/tc37xA_memory.ld"
+  "${CMAKE_SOURCE_DIR}/ld/tc37x_bsp_example_llvm.ld"
 )
 
-set_source_files_properties(${bsp_sources} PROPERTIES
-    COMPILE_OPTIONS "-Wno-extra-semi"
+set(BSP_SOURCES
+  "${CMAKE_SOURCE_DIR}/src/shared_main.c"
+  "${CMAKE_SOURCE_DIR}/illd/illd_uc.c"
+  "${CMAKE_SOURCE_DIR}/machine/wdtcon.c"
+  "${CMAKE_SOURCE_DIR}/crt0/tc3x_crt0.S"
+  "${CMAKE_SOURCE_DIR}/crt0/uc_tc37_bmhd.c"
+  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_isr.c"
+  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_isr_vector_table.c"
+  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_traps_tc3.c"
+  "${CMAKE_SOURCE_DIR}/bsp/uc/bsp_uc.c"
+  "${CMAKE_SOURCE_DIR}/bsp/uc/uc_tc37/uc_tc37.c"
+  "${CMAKE_SOURCE_DIR}/bsp/board/bsp_board.c"
+  "${CMAKE_SOURCE_DIR}/bsp/board/board_litekit_TC375_V2/board.c"
 )
 
-add_executable(${PROG_NAME} ${bsp_sources} ${crt0_sources} ${gen_sources} ${freertos_sources} ${lwip_sources} )
-
-target_include_directories(${PROG_NAME} PRIVATE
-    "./bsp"
-    "./"
-    "./bsp/uc/uc_tc37/TC37xPD_RegCHeaders/_Reg"
-    "./driver/Configurations"
-    "./driver/lwip/src/include"
-    "./driver/lwip/port/include"
-    "./FreeRTOS-Kernel/include"
-    "./FreeRTOS-Kernel/portable/ThirdParty/Partner-Supported-Ports/Tasking/AURIX_TC3xx"
+file(GLOB_RECURSE ILLD_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/**/*.c"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform/Tricore/Compilers/*.c"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore/*.c"
 )
 
-target_compile_options(${PROG_NAME} PRIVATE
-    $<$<C_COMPILER_ID:Clang>:-Wno-unknown-pragmas>
+file(GLOB_RECURSE ILLD_INCLUDE_CANDIDATES CONFIGURE_DEPENDS
+  LIST_DIRECTORIES true
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/*"
+)
+set(ILLD_INCLUDE_DIRS "")
+foreach(path IN LISTS ILLD_INCLUDE_CANDIDATES)
+  if(IS_DIRECTORY "${path}")
+    list(APPEND ILLD_INCLUDE_DIRS "${path}")
+  endif()
+endforeach()
+list(REMOVE_DUPLICATES ILLD_INCLUDE_DIRS)
+
+add_executable(${PROJECT_NAME})
+target_sources(${PROJECT_NAME} PRIVATE ${BSP_SOURCES} ${ILLD_SOURCES})
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+  "${CMAKE_SOURCE_DIR}"
+  "${CMAKE_SOURCE_DIR}/src"
+  "${CMAKE_SOURCE_DIR}/bsp"
+  "${CMAKE_SOURCE_DIR}/illd"
+  "${CMAKE_SOURCE_DIR}/machine"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Service/CpuGeneric"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Sfr/TC37x"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_PinMap"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_PinMap/TC37x"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/Scu/Std"
+  ${ILLD_INCLUDE_DIRS}
 )
 
-target_link_directories(${PROG_NAME} PRIVATE
-    "./ld"
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+  __TC37XX__
+  LITEKIT_TC375_V2
 )
 
-target_link_libraries(${PROG_NAME} PRIVATE
+target_compile_options(${PROJECT_NAME} PRIVATE
+  $<$<COMPILE_LANGUAGE:C>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall ${TRICORE_CPU_FLAGS}>
+  $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:GNU>>:-fstrict-volatile-bitfields>
+  $<$<COMPILE_LANGUAGE:ASM>:-g ${TRICORE_CPU_FLAGS}>
 )
 
-target_link_options(${PROG_NAME} PRIVATE
-    -Wl,-Map=${PROG_NAME}.map
-    -Wl,--gc-sections
-    -Wl,--cref
+target_link_options(${PROJECT_NAME} PRIVATE
+  -Wl,-T,${LINKER_MEMORY_SCRIPT}
+  -Wl,-L,${CMAKE_SOURCE_DIR}/ld
+  -Wl,--gc-sections
+  -Wl,-n
+  -nostartfiles
+  ${TRICORE_CPU_FLAGS}
 )
 
-IF (${BUILD_CONFIG} STREQUAL "LITEKIT_TC375_V2")
-    target_compile_options( ${PROG_NAME} PRIVATE
-        -DLITEKIT_TC375_V2
-        -D__TC37XX__
-        -mfloat-abi=hh32
-        -DTC375A
-        -DDEBUG_BUILD
-        -Wno-fixed-enum-extension
-        -Wno-strict-prototypes
-        -pedantic
-        -Wall
-        -Wuninitialized
-        -Wconditional-uninitialized
-    )
-    target_link_options(${PROG_NAME} PRIVATE
-        -mfloat-abi=hh32
-        -Wl,-Ttc37xA_memory.ld
-    )
-ENDIF()
+set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_DEPENDS "${LINKER_DEPENDS}")

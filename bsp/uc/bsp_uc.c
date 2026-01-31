@@ -9,10 +9,6 @@
  *
  *     TC3xx
  *
- * TOOLCHAIN:
- *
- *     TRICORE LLVM 5.2.0
- *
  * DESCRIPTION:
  *
  *     Low Level routines for TC3x architecture.

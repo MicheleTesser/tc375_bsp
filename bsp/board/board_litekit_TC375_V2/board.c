@@ -43,5 +43,13 @@ const BOARD_LED_S board_led[BOARD_NB_LEDS] =
 	{0, 6},  /* LED_1 */
 };
 
+/* ------------------------------------------------------------------------------------------------
+ * FUNCTION: bsp_board_wdg_Disable()
+ *    LiteKit TC375 V2 has no external watchdog to disable.
+ * ----------------------------------------------------------------------------------------------*/
+void bsp_board_wdg_Disable(void)
+{
+	/* No external watchdog on this board. */
+}
 
 #endif /* #if defined (LITEKIT_TC375_V2) */
