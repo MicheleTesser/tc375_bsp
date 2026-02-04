@@ -37,6 +37,7 @@ file(GLOB_RECURSE ILLD_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/**/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform/Tricore/Compilers/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore/*.c"
+  "${CMAKE_SOURCE_DIR}/driver_imp/*.c"
 )
 
 file(GLOB_RECURSE ILLD_INCLUDE_CANDIDATES CONFIGURE_DEPENDS
@@ -56,11 +57,17 @@ target_sources(${PROJECT_NAME} PRIVATE ${BSP_SOURCES} ${ILLD_SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}"
+  "${CMAKE_SOURCE_DIR}/Configurations"
   "${CMAKE_SOURCE_DIR}/src"
   "${CMAKE_SOURCE_DIR}/bsp"
   "${CMAKE_SOURCE_DIR}/illd"
   "${CMAKE_SOURCE_DIR}/machine"
+  "${CMAKE_SOURCE_DIR}/components"
+  "${CMAKE_SOURCE_DIR}/UART"
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/port/include"
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/include"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_impl"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Service/CpuGeneric"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore"
@@ -68,11 +75,16 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_PinMap"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_PinMap/TC37x"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/Scu/Std"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Service/CpuGeneric/SysSe/Bsp"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/Evadc/Adc"
+  "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Service/CpuGeneric/SysSe/Comm/"
   ${ILLD_INCLUDE_DIRS}
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
   __TC37XX__
+  DEVICE_TC37X
+  IFX_PIN_PACKAGE_LQFP176
   LITEKIT_TC375_V2
 )
 

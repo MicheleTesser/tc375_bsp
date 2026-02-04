@@ -24,6 +24,7 @@
 #ifndef BSP_BOARD_H
 #define BSP_BOARD_H
 
+#include <stdint.h>
 
 /* ------------------------------------------------------------------------------------------------
  * LED physical port-pin structure
