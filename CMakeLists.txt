@@ -4,10 +4,12 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR tricore)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-project(litekit_tc375_example C ASM)
+project(litekit_tc375_example C CXX ASM)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(TRICORE_CPU_FLAGS "-mcpu=tc3xx" CACHE STRING "Extra CPU-specific flags (e.g. -mcpu=tc3xx)")
 separate_arguments(TRICORE_CPU_FLAGS)
@@ -31,14 +33,18 @@ set(BSP_SOURCES
   "${CMAKE_SOURCE_DIR}/bsp/uc/uc_tc37/uc_tc37.c"
   "${CMAKE_SOURCE_DIR}/bsp/board/bsp_board.c"
   "${CMAKE_SOURCE_DIR}/bsp/board/board_litekit_TC375_V2/board.c"
+  "${CMAKE_SOURCE_DIR}/UART/UART_Logging.c"
 )
 
 file(GLOB_RECURSE ILLD_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/**/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform/Tricore/Compilers/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore/*.c"
+)
+file(GLOB DRIVER_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/driver_imp/*.c"
 )
+set_source_files_properties(${DRIVER_SOURCES} PROPERTIES LANGUAGE CXX)
 
 file(GLOB_RECURSE ILLD_INCLUDE_CANDIDATES CONFIGURE_DEPENDS
   LIST_DIRECTORIES true
@@ -53,7 +59,7 @@ endforeach()
 list(REMOVE_DUPLICATES ILLD_INCLUDE_DIRS)
 
 add_executable(${PROJECT_NAME})
-target_sources(${PROJECT_NAME} PRIVATE ${BSP_SOURCES} ${ILLD_SOURCES})
+target_sources(${PROJECT_NAME} PRIVATE ${BSP_SOURCES} ${ILLD_SOURCES} ${DRIVER_SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}"
@@ -91,6 +97,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_compile_options(${PROJECT_NAME} PRIVATE
   $<$<COMPILE_LANGUAGE:C>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall ${TRICORE_CPU_FLAGS}>
   $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:GNU>>:-fstrict-volatile-bitfields>
+  $<$<COMPILE_LANGUAGE:CXX>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall -Wno-register ${TRICORE_CPU_FLAGS}>
   $<$<COMPILE_LANGUAGE:ASM>:-g ${TRICORE_CPU_FLAGS}>
 )
 

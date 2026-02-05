@@ -38,7 +38,7 @@ union GpioPwm_h_t_conv{
 
 #ifdef DEBUG
 char __assert_size_pwm[(sizeof(GpioPwm_h)==sizeof(struct GpioPwm_t)?1:-1)];
-char __assert_align_pwm[(_Alignof(GpioPwm_h)==_Alignof(struct GpioPwm_t)?1:-1)];
+char __assert_align_pwm[(RACEUP_ALIGNOF(GpioPwm_h)==RACEUP_ALIGNOF(struct GpioPwm_t)?1:-1)];
 #endif
 
 int8_t hardware_init_gpio_pwm(GpioPwm_h* const restrict self, const enum GPIO_PWM_PIN id)

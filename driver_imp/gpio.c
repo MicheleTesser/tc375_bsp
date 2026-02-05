@@ -25,8 +25,8 @@ static struct GpioSpec{
   IfxPort_Mode mode;
 }BOARD_GPIOS[__NUM_OF_GPIOS__] =
 {
-  {&MODULE_P33, 0, GPIO_OUTPUT_MODE}, //INFO: GPIO_CORE_0_ALIVE_BLINK, default led 0
-  {&MODULE_P33, 4, GPIO_OUTPUT_MODE}, //INFO: GPIO_CORE_1_ALIVE_BLINK, debug led 2 1
+  {&MODULE_P00, 5, GPIO_OUTPUT_MODE}, //INFO: GPIO_CORE_0_ALIVE_BLINK, default led 0
+  {&MODULE_P00, 6, GPIO_OUTPUT_MODE}, //INFO: GPIO_CORE_1_ALIVE_BLINK, debug led 2 1
   {&MODULE_P33, 6, GPIO_OUTPUT_MODE}, //INFO: GPIO_CORE_2_ALIVE_BLINK, debug led 3 2
   {&MODULE_P23, 1, GPIO_INPUT_MODE}, //TODO: GPIO_RTD_BUTTON, DRIVE_BUTTON 3
   {&MODULE_P33, 5, GPIO_OUTPUT_MODE}, //INFO: GPIO_RTD_ASSI_SOUND, RTDS 4
@@ -62,10 +62,10 @@ union Gpio_h_t_conv{
 };
 #ifdef DEBUG
 char __assert_gpio_size[sizeof(GpioRead_h)==sizeof(struct GpioRead_t)?+1:-1];
-char __assert_gpio_align[_Alignof(GpioRead_h)==_Alignof(struct GpioRead_t)?+1:-1];
+char __assert_gpio_align[RACEUP_ALIGNOF(GpioRead_h)==RACEUP_ALIGNOF(struct GpioRead_t)?+1:-1];
 
 char __assert_gpio_size[sizeof(Gpio_h)==sizeof(struct Gpio_t)?+1:-1];
-char __assert_gpio_align[_Alignof(Gpio_h)==_Alignof(struct Gpio_t)?+1:-1];
+char __assert_gpio_align[RACEUP_ALIGNOF(Gpio_h)==RACEUP_ALIGNOF(struct Gpio_t)?+1:-1];
 
 #endif /* ifdef DEBUG */
 
@@ -108,7 +108,7 @@ int8_t hardware_init_read_permission_gpio(GpioRead_h* const restrict self, const
   struct GpioSpec* p_info_gpio = NULL;
   p_info_gpio = &BOARD_GPIOS[id];
 
-  p_self->pin_gpio= id;
+  p_self->pin_gpio = (enum GPIO_PIN)id;
   IfxPort_setPinMode(p_info_gpio->port,p_info_gpio->pin_index,p_info_gpio->mode);
 
   return 0;
