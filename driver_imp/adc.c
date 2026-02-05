@@ -3,7 +3,6 @@
 #include <IfxEvadc_Adc.h>
 
 #include <sys/cdefs.h>
-#include <stdatomic.h>
 #include <stdint.h>
 #include <string.h>
 
@@ -21,7 +20,7 @@ union Adc_h_t_conv
 
 #ifdef DEBUG
 char __assert_size_adc[sizeof(Adc_h)==sizeof(struct Adc_t)?1:-1];
-char __assert_align_adc[_Alignof(Adc_h)==_Alignof(struct Adc_t)?1:-1];
+char __assert_align_adc[RACEUP_ALIGNOF(Adc_h)==RACEUP_ALIGNOF(struct Adc_t)?1:-1];
 #endif /* ifdef DEBUG */
 
 static struct{
@@ -42,8 +41,8 @@ static struct {
   .init = ATOMIC_FLAG_INIT
 };
 
-static atomic_flag group0_queue_started;
-static atomic_flag group0_group_started;
+static atomic_flag group0_queue_started = ATOMIC_FLAG_INIT;
+static atomic_flag group0_group_started = ATOMIC_FLAG_INIT;
 
 //public
 
@@ -146,4 +145,3 @@ void NS_ADC(destroy)(Adc_h* const restrict self)
   atomic_flag_clear(&ADC_INFO[p_self->pin].taken);
   memset(p_self, 0, sizeof(*p_self));
 }
-

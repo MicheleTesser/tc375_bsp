@@ -12,7 +12,6 @@
 
 
 #include <stdint.h>
-#include <stdatomic.h>
 #include <stddef.h>
 
 
@@ -27,13 +26,13 @@
 
 typedef struct __attribute__((aligned(4))){
   enum MAILBOX_TYPE type;
-  atomic_flag in_use;
+  atomic_flag in_use = ATOMIC_FLAG_INIT;
   struct CanNode* can_node;
 }CommonCanMailbox;
 
 typedef struct __attribute__((aligned(4))) CanMailbox {
   CommonCanMailbox common;
-  const uint8_t data[32];
+  uint8_t data[32];
 }CanMailbox;
 
 typedef struct __attribute__((aligned(4)))
@@ -61,8 +60,8 @@ typedef struct CanNode{
     IfxCan_Can canModule;                                   /* CAN module handle                                    */
     IfxCan_Can_Node canNode;                                /* CAN node handle data structure                       */
     IfxCan_Can_NodeConfig canNodeConfig;                    /* CAN node configuration structure                     */
-    atomic_flag init_done;
-    atomic_flag taken;
+    atomic_bool init_done = ATOMIC_VAR_INIT(false);
+    atomic_bool taken = ATOMIC_VAR_INIT(false);
     struct CanMailbox rx_mailbox[IfxCan_RxBufferId_63 + 1];
     struct CanMailbox tx_mailbox[IfxCan_TxBufferId_31 + 1];
 }CanNodeDriver;
@@ -72,8 +71,8 @@ typedef struct CanNode{
 #ifdef DEBUG
 char __assert_size_can_mailbox_rx[sizeof(CanMailbox)==sizeof(CanMailboxRx)?1:-1];
 char __assert_size_can_mailbox_tx[sizeof(CanMailbox)==sizeof(CanMailboxTx)?1:-1];
-char __assert_align_can_mailbox_rx[_Alignof(CanMailbox)==_Alignof(CanMailboxRx)?1:-1];
-char __assert_align_can_mailbox_tx[_Alignof(CanMailbox)==_Alignof(CanMailboxTx)?1:-1];
+char __assert_align_can_mailbox_rx[RACEUP_ALIGNOF(CanMailbox)==RACEUP_ALIGNOF(CanMailboxRx)?1:-1];
+char __assert_align_can_mailbox_tx[RACEUP_ALIGNOF(CanMailbox)==RACEUP_ALIGNOF(CanMailboxTx)?1:-1];
 #endif
 
 static CanNodeDriver CAN_NODES[__NUM_OF_CAN_MODULES__];
@@ -171,8 +170,8 @@ int8_t hardware_init_can(const enum CAN_MODULES mod, const enum CAN_FREQUENCY ba
     return -1;
   }
 
-  atomic_store(&node->init_done, 1);
-  atomic_store(&node->taken, 0);
+  atomic_store(&node->init_done, true);
+  atomic_store(&node->taken, false);
 
   IfxCpu_enableInterrupts();
   return 0;
@@ -185,7 +184,7 @@ struct CanNode* hardware_init_can_get_ref_node(const enum CAN_MODULES mod)
       atomic_load(&node->init_done) &&
       !atomic_load(&node->taken) )
   {
-    atomic_store(&node->taken,1);
+    atomic_store(&node->taken, true);
     return node;
   }
   return NULL;
@@ -193,7 +192,7 @@ struct CanNode* hardware_init_can_get_ref_node(const enum CAN_MODULES mod)
 
 void hardware_init_can_destroy_ref_node(struct CanNode** restrict self)
 {
-  atomic_store(&(*self)->taken, 0);
+  atomic_store(&(*self)->taken, false);
   *self = NULL;
 }
 
@@ -215,7 +214,8 @@ int8_t hardware_write_can(struct CanNode* const restrict self ,
   tx_message.messageId = mex->id;
   tx_message.messageIdLength = IfxCan_MessageIdLength_standard;
   tx_message.frameMode = IfxCan_FrameMode_standard;
-  tx_message.dataLengthCode = mex->message_size;
+  tx_message.dataLengthCode =
+    (IfxCan_DataLengthCode)(IfxCan_DataLengthCode_0 + mex->message_size);
 
   Ifx_TickTime ticksFor1ms = IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, WAIT_TIME);
   int8_t err= 0;
@@ -223,7 +223,8 @@ int8_t hardware_write_can(struct CanNode* const restrict self ,
 
   /* Send the CAN message with the previously defined TX message configuration and content */
   while(IfxCan_Status_ok !=
-      (err = IfxCan_Can_sendMessage(&self->canNode, &tx_message, (uint32_t *) &mex->full_word)) &&
+      (err = IfxCan_Can_sendMessage(&self->canNode, &tx_message,
+          (uint32 *)&mex->full_word)) &&
       ret++ < 50)
   {
   }
@@ -302,7 +303,8 @@ struct CanMailbox* hardware_get_mailbox(
       conv_mailbox.rx_mailbox->filter.id1= filter_id;
       conv_mailbox.rx_mailbox->filter.id2= filter_mask;
       conv_mailbox.rx_mailbox->filter.elementConfiguration= IfxCan_FilterElementConfiguration_storeInRxBuffer;
-      conv_mailbox.rx_mailbox->filter.rxBufferOffset= IfxCan_RxBufferId_0 + mailbox_index;
+      conv_mailbox.rx_mailbox->filter.rxBufferOffset=
+        (IfxCan_RxBufferId)(IfxCan_RxBufferId_0 + mailbox_index);
 
       IfxCan_Can_setStandardFilter(
           &conv_mailbox.general_mailbox->common.can_node->canNode,
@@ -313,8 +315,10 @@ struct CanMailbox* hardware_get_mailbox(
       conv_mailbox.tx_mailbox->tx_message.messageId = filter_id;
       conv_mailbox.tx_mailbox->tx_message.messageIdLength = IfxCan_MessageIdLength_standard;
       conv_mailbox.tx_mailbox->tx_message.frameMode = IfxCan_FrameMode_standard;
-      conv_mailbox.tx_mailbox->tx_message.dataLengthCode= IfxCan_DataLengthCode_0 + mex_size;
-      conv_mailbox.tx_mailbox->tx_message.bufferNumber = IfxCan_TxBufferId_0 + mailbox_index;
+      conv_mailbox.tx_mailbox->tx_message.dataLengthCode=
+        (IfxCan_DataLengthCode)(IfxCan_DataLengthCode_0 + mex_size);
+      conv_mailbox.tx_mailbox->tx_message.bufferNumber =
+        (IfxCan_TxBufferId)(IfxCan_TxBufferId_0 + mailbox_index);
       break;
   }
 
@@ -325,7 +329,7 @@ int8_t hardware_mailbox_read(struct CanMailbox* const restrict self,
     CanMessage* const restrict o_mex)
 {
   IfxCan_Message message;
-  IfxCan_RxBufferId rxBufferId =0;
+  IfxCan_RxBufferId rxBufferId = IfxCan_RxBufferId_0;
   uint8_t f=0;
 
   IfxCan_Can_initMessage(&message);
@@ -341,7 +345,7 @@ int8_t hardware_mailbox_read(struct CanMailbox* const restrict self,
       }
       break;
     case RECV_MAILBOX:
-      rxBufferId = self - self->common.can_node->rx_mailbox;
+      rxBufferId = (IfxCan_RxBufferId)(self - self->common.can_node->rx_mailbox);
       message.bufferNumber = rxBufferId;
       if(!IfxCan_Can_isNewDataReceived(&self->common.can_node->canNode, rxBufferId))
       {
@@ -354,7 +358,7 @@ int8_t hardware_mailbox_read(struct CanMailbox* const restrict self,
   }
   IfxCan_Can_readMessage(&self->common.can_node->canNode,
       &message,
-      &o_mex->words[0]);
+      (uint32 *)&o_mex->words[0]);
   o_mex->message_size = IfxCan_Node_getDataLength(message.dataLengthCode);
   o_mex->id = message.messageId; 
   return 1;
@@ -374,7 +378,7 @@ int8_t hardware_mailbox_send(struct CanMailbox* const restrict self ,
   return IfxCan_Can_sendMessage(
       &general_mailbox.general_mailbox->common.can_node->canNode,
       &general_mailbox.tx_mailbox->tx_message,
-      (uint32_t *)&data);
+      (uint32 *)&data);
 }
 
 void hardware_free_mailbox_can(struct CanMailbox** restrict self)
