@@ -29,8 +29,10 @@
 /*-----------------------------------------------------Includes------------------------------------------------------*/
 /*********************************************************************************************************************/
 #include "UART_Logging.h"
+#include "bsp.h"
 #include "IfxAsclin_Asc.h"
 #include "IfxCpu_Irq.h"
+
 
 /*********************************************************************************************************************/
 /*------------------------------------------------------Macros-------------------------------------------------------*/
@@ -53,9 +55,7 @@ uint8 g_ascTxBuffer[ASC_TX_BUFFER_SIZE + sizeof(Ifx_Fifo) + 8];             /* D
 /*********************************************************************************************************************/
 /*---------------------------------------------Function Implementations----------------------------------------------*/
 /*********************************************************************************************************************/
-IFX_INTERRUPT(asclin0TxISR, 0, INTPRIO_ASCLIN0_TX);                     /* Adding the Interrupt Service Routine     */
-
-void asclin0TxISR(void)
+static void asclin0TxISR(void)
 {
     IfxAsclin_Asc_isrTransmit(&g_asc);
 }
@@ -88,10 +88,13 @@ void initUART(void)
     };
     ascConfig.pins = &pins;
 
+    /* Register TX ISR with BSP vector table (BSP ISR init runs before shared_main). */
+    bsp_isr_RegisterHandler(bsp_uc_core_GetCurrentCore(), (BspIsrHandler)asclin0TxISR, INTPRIO_ASCLIN0_TX);
+
     IfxAsclin_Asc_initModule(&g_asc, &ascConfig);                       /* Initialize module with above parameters  */
 }
 
-void sendUARTMessage(char * msg, Ifx_SizeT count)
+void sendUARTMessage(const char * msg, Ifx_SizeT count)
 {
     IfxAsclin_Asc_write(&g_asc, msg, &count, TIME_INFINITE);            /* Transfer of data                         */
 }

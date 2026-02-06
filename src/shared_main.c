@@ -19,13 +19,18 @@
  *************************************************************************************************/
 
 /* default example BSP package */
+#include "adc.h"
 #include "board/bsp_board.h"
 #include "bsp.h"
 
 /* set of BSP API implementation by means of iLLD drivers */
-#include "illd.h"
-#include <stdint.h>
+#include "Ifx_Lwip.h"
+#include "can.h"
 #include "component.h"
+#include "gpio.h"
+#include "illd.h"
+#include "serial.h"
+#include <stdint.h>
 
 /* ================================================================================================
  * SYMBOLS
@@ -66,9 +71,19 @@ void shared_main(void) {
 
   /* Forever empty loop - All activity executed in periodic interrupts on each
    * core */
-  hardware_init_serial();
+
+  serial_setup(115200);
+  Gpio_h gpio = {0};
+  Gpio_h gpio_2 = {0};
+  hardware_init_gpio(&gpio, GPIO_CORE_0_ALIVE_BLINK, 0);
+  hardware_init_gpio(&gpio_2, GPIO_CORE_1_ALIVE_BLINK, 0);
+  gpio_toggle(&gpio);
+
   for (;;) {
-    bsp_board_led_Set(BOARD_LED_0, BOARD_LED_SET_TOGGLE);
+    serial_write_str("ciao mondo!");
+    gpio_toggle(&gpio_2);
+    gpio_toggle(&gpio);
+
     for (uint32_t i = 0; i < 100000000U; ++i) {
       __asm("nop");
     }

@@ -33,10 +33,18 @@
 /*********************************************************************************************************************/
 #include "Ifx_Types.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*********************************************************************************************************************/
 /*------------------------------------------------Function Prototypes------------------------------------------------*/
 /*********************************************************************************************************************/
 void initUART(void);                                    /* Initialization function  */
-void sendUARTMessage(char * msg, Ifx_SizeT count);      /* Send function            */
+void sendUARTMessage(const char * msg, Ifx_SizeT count);      /* Send function            */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* UART_LOGGING_H_ */

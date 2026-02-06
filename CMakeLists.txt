@@ -11,6 +11,11 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(CMAKE_EXE_LINKER_FLAGS MATCHES "--cref")
+  string(REPLACE "-Wl,--cref" "" CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+  string(REPLACE "--cref" "" CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+endif()
+
 set(TRICORE_CPU_FLAGS "-mcpu=tc3xx" CACHE STRING "Extra CPU-specific flags (e.g. -mcpu=tc3xx)")
 separate_arguments(TRICORE_CPU_FLAGS)
 
@@ -40,6 +45,23 @@ file(GLOB_RECURSE ILLD_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/**/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Platform/Tricore/Compilers/*.c"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Infra/Ssw/TC3xx/Tricore/*.c"
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/port/src/*.c"
+  "${CMAKE_SOURCE_DIR}/Ethernet/Phy_Dp83825i/*.c"
+)
+set(LWIP_SOURCES "")
+file(GLOB LWIP_CORE_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/core/*.c"
+)
+file(GLOB LWIP_CORE_IPV4_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/core/ipv4/*.c"
+)
+file(GLOB LWIP_NETIF_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/netif/ethernet.c"
+)
+list(APPEND LWIP_SOURCES
+  ${LWIP_CORE_SOURCES}
+  ${LWIP_CORE_IPV4_SOURCES}
+  ${LWIP_NETIF_SOURCES}
 )
 file(GLOB DRIVER_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/driver_imp/*.c"
@@ -59,7 +81,12 @@ endforeach()
 list(REMOVE_DUPLICATES ILLD_INCLUDE_DIRS)
 
 add_executable(${PROJECT_NAME})
-target_sources(${PROJECT_NAME} PRIVATE ${BSP_SOURCES} ${ILLD_SOURCES} ${DRIVER_SOURCES})
+target_sources(${PROJECT_NAME} PRIVATE
+  ${BSP_SOURCES}
+  ${ILLD_SOURCES}
+  ${LWIP_SOURCES}
+  ${DRIVER_SOURCES}
+)
 
 target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}"
@@ -72,6 +99,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}/UART"
   "${CMAKE_SOURCE_DIR}/Ethernet/lwip/port/include"
   "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/include"
+  "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/include/lwip"
+  "${CMAKE_SOURCE_DIR}/Ethernet/Phy_Dp83825i/"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/iLLD/TC3xx/Tricore/_impl"
   "${CMAKE_SOURCE_DIR}/illd_release_tc3x/src/BaseSw/Service/CpuGeneric"
@@ -99,6 +128,8 @@ target_compile_options(${PROJECT_NAME} PRIVATE
   $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:GNU>>:-fstrict-volatile-bitfields>
   $<$<COMPILE_LANGUAGE:CXX>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall -Wno-register ${TRICORE_CPU_FLAGS}>
   $<$<COMPILE_LANGUAGE:ASM>:-g ${TRICORE_CPU_FLAGS}>
+  $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:Clang>>:-Qunused-arguments>
+  $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<C_COMPILER_ID:Clang>>:-Qunused-arguments>
 )
 
 target_link_options(${PROJECT_NAME} PRIVATE
@@ -106,7 +137,6 @@ target_link_options(${PROJECT_NAME} PRIVATE
   -Wl,-L,${CMAKE_SOURCE_DIR}/ld
   -Wl,--gc-sections
   -Wl,-n
-  -nostartfiles
   ${TRICORE_CPU_FLAGS}
 )
 

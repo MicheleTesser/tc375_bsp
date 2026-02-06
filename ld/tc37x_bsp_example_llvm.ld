@@ -71,8 +71,8 @@ REGION_ALIAS("DATA_DLMU_CPU2_", dlmu_cpu2)
 /* Common code and data */
 REGION_ALIAS("CODE",     int_flash0)
 REGION_ALIAS("RODATA",   int_flash0)
-REGION_ALIAS("DATA", 	 dlmu_cpu0)
-REGION_ALIAS("RAM_CODE", dlmu_cpu0)
+REGION_ALIAS("DATA", 	 dspr_cpu0)
+REGION_ALIAS("RAM_CODE", dspr_cpu0)
  
 
 /* ================================================================================================
