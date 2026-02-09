@@ -27,7 +27,6 @@
 #ifndef ILLD_H
 #define ILLD_H
 
-#include "illd_uc.h"
 #include "Configuration.h"
 #include "Cpu/Std/Ifx_Types.h"
 #include "Cpu/Irq/IfxCpu_Irq.h"

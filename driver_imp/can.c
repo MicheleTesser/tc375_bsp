@@ -1,6 +1,5 @@
 #include "component.h"
 
-#include "Bsp.h"
 #include "Ifx_Types.h"
 #include "IfxCan_Can.h"
 #include "IfxCan.h"
@@ -8,7 +7,7 @@
 #include "IfxPort.h"
 #include "IfxCpu.h"
 #include "IfxScuWdt.h"
-#include "IfxPort.h"
+#include "IfxStm.h"
 
 
 #include <stdint.h>
@@ -217,7 +216,7 @@ int8_t hardware_write_can(struct CanNode* const restrict self ,
   tx_message.dataLengthCode =
     (IfxCan_DataLengthCode)(IfxCan_DataLengthCode_0 + mex->message_size);
 
-  Ifx_TickTime ticksFor1ms = IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, WAIT_TIME);
+  Ifx_TickTime ticksFor1ms = IfxStm_getTicksFromMilliseconds(IFXSTM_DEFAULT_TIMER, WAIT_TIME);
   int8_t err= 0;
   int ret=0;
 
@@ -232,7 +231,11 @@ int8_t hardware_write_can(struct CanNode* const restrict self ,
   /* Initialize a time variable for waiting 1 ms */
 
   /* Adding additional time delay so we are sure that acceptance filtering took place by the node 1 */
-  waitTime(ticksFor1ms);
+  uint64 start = IfxStm_get(IFXSTM_DEFAULT_TIMER);
+  uint64 wait_ticks = (uint64)ticksFor1ms;
+  while ((IfxStm_get(IFXSTM_DEFAULT_TIMER) - start) < wait_ticks)
+  {
+  }
   return ret == 50? -1: 0;
 }
 

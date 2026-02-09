@@ -27,17 +27,9 @@ set(LINKER_DEPENDS
 
 set(BSP_SOURCES
   "${CMAKE_SOURCE_DIR}/src/shared_main.c"
-  "${CMAKE_SOURCE_DIR}/illd/illd_uc.c"
   "${CMAKE_SOURCE_DIR}/machine/wdtcon.c"
   "${CMAKE_SOURCE_DIR}/crt0/tc3x_crt0.S"
   "${CMAKE_SOURCE_DIR}/crt0/uc_tc37_bmhd.c"
-  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_isr.c"
-  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_isr_vector_table.c"
-  "${CMAKE_SOURCE_DIR}/bsp/isr/bsp_traps_tc3.c"
-  "${CMAKE_SOURCE_DIR}/bsp/uc/bsp_uc.c"
-  "${CMAKE_SOURCE_DIR}/bsp/uc/uc_tc37/uc_tc37.c"
-  "${CMAKE_SOURCE_DIR}/bsp/board/bsp_board.c"
-  "${CMAKE_SOURCE_DIR}/bsp/board/board_litekit_TC375_V2/board.c"
   "${CMAKE_SOURCE_DIR}/UART/UART_Logging.c"
 )
 
@@ -92,8 +84,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}"
   "${CMAKE_SOURCE_DIR}/Configurations"
   "${CMAKE_SOURCE_DIR}/src"
-  "${CMAKE_SOURCE_DIR}/bsp"
-  "${CMAKE_SOURCE_DIR}/illd"
   "${CMAKE_SOURCE_DIR}/machine"
   "${CMAKE_SOURCE_DIR}/components"
   "${CMAKE_SOURCE_DIR}/UART"
@@ -121,6 +111,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
   DEVICE_TC37X
   IFX_PIN_PACKAGE_LQFP176
   LITEKIT_TC375_V2
+  IFX_USE_COMPILER_CONSTRUCTED_INT
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE

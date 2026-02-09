@@ -29,7 +29,6 @@
 /*-----------------------------------------------------Includes------------------------------------------------------*/
 /*********************************************************************************************************************/
 #include "UART_Logging.h"
-#include "bsp.h"
 #include "IfxAsclin_Asc.h"
 #include "IfxCpu_Irq.h"
 
@@ -42,8 +41,6 @@
 #define SERIAL_PIN_RX           IfxAsclin0_RXA_P14_1_IN                     /* RX pin of the board                  */
 #define SERIAL_PIN_TX           IfxAsclin0_TX_P14_0_OUT                     /* TX pin of the board                  */
 
-#define INTPRIO_ASCLIN0_TX      19                                          /* Priority of the ISR                  */
-
 #define ASC_TX_BUFFER_SIZE      64                                          /* Definition of the buffer size        */
 
 /*********************************************************************************************************************/
@@ -55,11 +52,6 @@ uint8 g_ascTxBuffer[ASC_TX_BUFFER_SIZE + sizeof(Ifx_Fifo) + 8];             /* D
 /*********************************************************************************************************************/
 /*---------------------------------------------Function Implementations----------------------------------------------*/
 /*********************************************************************************************************************/
-static void asclin0TxISR(void)
-{
-    IfxAsclin_Asc_isrTransmit(&g_asc);
-}
-
 void initUART(void)
 {
     /* Initialize an instance of IfxAsclin_Asc_Config with default values */
@@ -69,8 +61,8 @@ void initUART(void)
     /* Set the desired baud rate */
     ascConfig.baudrate.baudrate = SERIAL_BAUDRATE;
 
-    /* ISR priorities and interrupt target */
-    ascConfig.interrupt.txPriority = INTPRIO_ASCLIN0_TX;
+    /* Polling TX path: no TX ISR needed. */
+    ascConfig.interrupt.txPriority = 0;
     ascConfig.interrupt.typeOfService = IfxCpu_Irq_getTos(IfxCpu_getCoreIndex());
 
     /* FIFO configuration */
@@ -88,13 +80,22 @@ void initUART(void)
     };
     ascConfig.pins = &pins;
 
-    /* Register TX ISR with BSP vector table (BSP ISR init runs before shared_main). */
-    bsp_isr_RegisterHandler(bsp_uc_core_GetCurrentCore(), (BspIsrHandler)asclin0TxISR, INTPRIO_ASCLIN0_TX);
-
     IfxAsclin_Asc_initModule(&g_asc, &ascConfig);                       /* Initialize module with above parameters  */
 }
 
 void sendUARTMessage(const char * msg, Ifx_SizeT count)
 {
-    IfxAsclin_Asc_write(&g_asc, msg, &count, TIME_INFINITE);            /* Transfer of data                         */
+    const uint8 *data = (const uint8 *)msg;
+
+    for (Ifx_SizeT i = 0; i < count; ++i)
+    {
+        uint8 byte = data[i];
+
+        while (IfxAsclin_getTxFifoFillLevel(g_asc.asclin) >= 16U)
+        {
+            __asm("nop");
+        }
+
+        IfxAsclin_write8(g_asc.asclin, &byte, 1U);
+    }
 }

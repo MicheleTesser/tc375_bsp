@@ -2,7 +2,6 @@
 #include <string.h>
 
 #include "IfxPort.h"
-#include "Bsp.h"
 #include "Ifx_Types.h"
 #include "IfxGpt12.h"
 #include "IfxPort.h"

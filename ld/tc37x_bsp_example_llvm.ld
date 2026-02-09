@@ -42,11 +42,6 @@ REGION_ALIAS("BMHD_COPY", ucb_bmhd_copy)
 /* CRT0 Boot Code Start */ 
 REGION_ALIAS("BOOT", int_flash0)
 
-/* BSP Interrupt handler table in RAM */
-REGION_ALIAS("BSP_ISR_HANDLERS_CPU0_", pspr_cpu0) 
-REGION_ALIAS("BSP_ISR_HANDLERS_CPU1_", pspr_cpu1) 
-REGION_ALIAS("BSP_ISR_HANDLERS_CPU2_", pspr_cpu2) 
-
 /* Core0: Output sections to memory region mapping */
 REGION_ALIAS("CODE_CPU0_",      int_flash0)
 REGION_ALIAS("RODATA_CPU0_",    int_flash0)
@@ -126,40 +121,20 @@ SECTIONS
 
 
 /* ================================================================================================
- * SECTIONS: Reset Default TRAP handlers provided by BSP 
- * the TRAP table is shared across cores
- * BTV register value after reset is 0xA0000100 (0x80000100)
+ * SECTIONS: Reset TRAP table
+ * Keep CPU0 trap table at 0x80000100, matching BTV reset value.
  * ==============================================================================================*/
 
 SECTIONS
 {
-	.bsp_trap_reset 0x80000100 :
+	.CPU0.trap_table 0x80000100 :
 	{
-		KEEP (*(.bsp_trap_vector_table))
-		KEEP (*(.bsp_trap_handlers))
+		KEEP (*(.traptab_cpu0))
 	} > CODE_CPU0_
 }
 	
 	
-/* ================================================================================================
- * SECTIONS: BSP Interrupt tables
- * BSP provided Interrupt vector table and ISR Handler tables for each core
- * BSP code set BIV register to core corresponding Base address 
- * ==============================================================================================*/
-
-SECTIONS
-{
-	.CPU0.bsp_isr_vector_table : { KEEP (*(.bsp_isr_vector_table_cpu0)) } > CODE_CPU0_
-	.CPU1.bsp_isr_vector_table : { KEEP (*(.bsp_isr_vector_table_cpu1)) } > CODE_CPU1_
-	.CPU2.bsp_isr_vector_table : { KEEP (*(.bsp_isr_vector_table_cpu2)) } > CODE_CPU2_
-}
-
-SECTIONS
-{
-    .CPU0.bsp_isr_ram_table (NOLOAD) : { *(.BspIsrRamTable_Cpu0) } > BSP_ISR_HANDLERS_CPU0_ 
-    .CPU1.bsp_isr_ram_table (NOLOAD) : { *(.BspIsrRamTable_Cpu1) } > BSP_ISR_HANDLERS_CPU1_
-    .CPU2.bsp_isr_ram_table (NOLOAD) : { *(.BspIsrRamTable_Cpu2) } > BSP_ISR_HANDLERS_CPU2_
-}
+/* BSP ISR tables removed: project uses compiler/iLLD interrupt table. */
 
 
 /* ================================================================================================

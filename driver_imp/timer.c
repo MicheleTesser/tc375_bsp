@@ -1,7 +1,6 @@
 #include "component.h"
 
-#include "IfxPort.h"
-#include "Bsp.h"
+#include "IfxStm.h"
 
 #include <stdint.h>
 
@@ -13,22 +12,32 @@ void timer_init(void)
 
 time_var_microseconds timer_time_now(void)
 {
-  return now();
+  return (time_var_microseconds)IfxStm_get(IFXSTM_DEFAULT_TIMER);
 }
 
 void timer_wait(const time_var_microseconds ticks)
 {
-  waitTime(ticks);
+  if (ticks <= 0)
+  {
+    return;
+  }
+
+  uint64 start = IfxStm_get(IFXSTM_DEFAULT_TIMER);
+  uint64 wait_ticks = (uint64)ticks;
+
+  while ((IfxStm_get(IFXSTM_DEFAULT_TIMER) - start) < wait_ticks)
+  {
+  }
 }
 
 time_var_microseconds get_tick_from_millis(uint32_t millis)
 {
-  return IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, millis);
+  return IfxStm_getTicksFromMilliseconds(IFXSTM_DEFAULT_TIMER, millis);
 }
 
 time_var_microseconds get_tick_from_micros(uint32_t micros)
 {
-  return IfxStm_getTicksFromMicroseconds(BSP_DEFAULT_TIMER, micros);
+  return IfxStm_getTicksFromMicroseconds(IFXSTM_DEFAULT_TIMER, micros);
 }
 
 float get_millis_from_tick(time_var_microseconds ticks)
