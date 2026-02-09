@@ -39,10 +39,9 @@
 #include "IfxCpu_Irq.h"
 #include "UART_Logging.h"
 
-#include <atomic>
+#include <stdatomic.h>
 #include <stdio.h>
 
-#include "compat.h"
 #include "component.h"
 #include <stdint.h>
 #include <string.h>

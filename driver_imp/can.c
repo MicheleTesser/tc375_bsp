@@ -25,7 +25,7 @@
 
 typedef struct __attribute__((aligned(4))){
   enum MAILBOX_TYPE type;
-  atomic_flag in_use = ATOMIC_FLAG_INIT;
+  atomic_flag in_use;
   struct CanNode* can_node;
 }CommonCanMailbox;
 
@@ -59,8 +59,8 @@ typedef struct CanNode{
     IfxCan_Can canModule;                                   /* CAN module handle                                    */
     IfxCan_Can_Node canNode;                                /* CAN node handle data structure                       */
     IfxCan_Can_NodeConfig canNodeConfig;                    /* CAN node configuration structure                     */
-    atomic_bool init_done = ATOMIC_VAR_INIT(false);
-    atomic_bool taken = ATOMIC_VAR_INIT(false);
+    atomic_bool init_done;
+    atomic_bool taken;
     struct CanMailbox rx_mailbox[IfxCan_RxBufferId_63 + 1];
     struct CanMailbox tx_mailbox[IfxCan_TxBufferId_31 + 1];
 }CanNodeDriver;
@@ -169,8 +169,8 @@ int8_t hardware_init_can(const enum CAN_MODULES mod, const enum CAN_FREQUENCY ba
     return -1;
   }
 
-  atomic_store(&node->init_done, true);
-  atomic_store(&node->taken, false);
+  atomic_store(&node->init_done, 1U);
+  atomic_store(&node->taken, 0U);
 
   IfxCpu_enableInterrupts();
   return 0;
@@ -183,7 +183,7 @@ struct CanNode* hardware_init_can_get_ref_node(const enum CAN_MODULES mod)
       atomic_load(&node->init_done) &&
       !atomic_load(&node->taken) )
   {
-    atomic_store(&node->taken, true);
+    atomic_store(&node->taken, 1U);
     return node;
   }
   return NULL;
@@ -191,7 +191,7 @@ struct CanNode* hardware_init_can_get_ref_node(const enum CAN_MODULES mod)
 
 void hardware_init_can_destroy_ref_node(struct CanNode** restrict self)
 {
-  atomic_store(&(*self)->taken, false);
+  atomic_store(&(*self)->taken, 0U);
   *self = NULL;
 }
 

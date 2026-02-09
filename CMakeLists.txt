@@ -4,12 +4,10 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR tricore)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-project(litekit_tc375_example C CXX ASM)
+project(litekit_tc375_example C ASM)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_EXE_LINKER_FLAGS MATCHES "--cref")
   string(REPLACE "-Wl,--cref" "" CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
@@ -26,11 +24,15 @@ set(LINKER_DEPENDS
 )
 
 set(BSP_SOURCES
-  "${CMAKE_SOURCE_DIR}/src/shared_main.c"
+  "${CMAKE_SOURCE_DIR}/shared_main.c"
   "${CMAKE_SOURCE_DIR}/machine/wdtcon.c"
   "${CMAKE_SOURCE_DIR}/crt0/tc3x_crt0.S"
   "${CMAKE_SOURCE_DIR}/crt0/uc_tc37_bmhd.c"
   "${CMAKE_SOURCE_DIR}/UART/UART_Logging.c"
+)
+
+file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS
+  "${CMAKE_SOURCE_DIR}/src/cores/**/*.c"
 )
 
 file(GLOB_RECURSE ILLD_SOURCES CONFIGURE_DEPENDS
@@ -58,7 +60,27 @@ list(APPEND LWIP_SOURCES
 file(GLOB DRIVER_SOURCES CONFIGURE_DEPENDS
   "${CMAKE_SOURCE_DIR}/driver_imp/*.c"
 )
-set_source_files_properties(${DRIVER_SOURCES} PROPERTIES LANGUAGE CXX)
+
+set(BOARD_DBC_SOURCES
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can1/can1.c"
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can2/can2.c"
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can3/can3.c"
+)
+
+set(DPS_SOURCES
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/common/dps_messages.c"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/master/dps_master.c"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/slave/dps_slave.c"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/lib/c_vector/c_vector.c"
+)
+
+set(TV_SOURCES
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025/ControlSystems.c"
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025/ControlSystems_data.c"
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025/rtGetInf.c"
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025/rtGetNaN.c"
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025/rt_nonfinite.c"
+)
 
 file(GLOB_RECURSE ILLD_INCLUDE_CANDIDATES CONFIGURE_DEPENDS
   LIST_DIRECTORIES true
@@ -75,9 +97,13 @@ list(REMOVE_DUPLICATES ILLD_INCLUDE_DIRS)
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE
   ${BSP_SOURCES}
+  ${APP_SOURCES}
   ${ILLD_SOURCES}
   ${LWIP_SOURCES}
   ${DRIVER_SOURCES}
+  ${BOARD_DBC_SOURCES}
+  ${DPS_SOURCES}
+  ${TV_SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -87,6 +113,16 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   "${CMAKE_SOURCE_DIR}/machine"
   "${CMAKE_SOURCE_DIR}/components"
   "${CMAKE_SOURCE_DIR}/UART"
+  "${CMAKE_SOURCE_DIR}/lib"
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can1"
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can2"
+  "${CMAKE_SOURCE_DIR}/lib/board_dbc/dbc/out_lib/can3"
+  "${CMAKE_SOURCE_DIR}/lib/DPS"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/common"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/master"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/src/slave"
+  "${CMAKE_SOURCE_DIR}/lib/DPS/lib/c_vector"
+  "${CMAKE_SOURCE_DIR}/lib/tv_2025"
   "${CMAKE_SOURCE_DIR}/Ethernet/lwip/port/include"
   "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/include"
   "${CMAKE_SOURCE_DIR}/Ethernet/lwip/src/include/lwip"
@@ -117,10 +153,8 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_compile_options(${PROJECT_NAME} PRIVATE
   $<$<COMPILE_LANGUAGE:C>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall ${TRICORE_CPU_FLAGS}>
   $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:GNU>>:-fstrict-volatile-bitfields>
-  $<$<COMPILE_LANGUAGE:CXX>:-g -O2 -fno-common -ffunction-sections -fdata-sections -Wall -Wno-register ${TRICORE_CPU_FLAGS}>
   $<$<COMPILE_LANGUAGE:ASM>:-g ${TRICORE_CPU_FLAGS}>
   $<$<AND:$<COMPILE_LANGUAGE:C>,$<C_COMPILER_ID:Clang>>:-Qunused-arguments>
-  $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<C_COMPILER_ID:Clang>>:-Qunused-arguments>
 )
 
 target_link_options(${PROJECT_NAME} PRIVATE
